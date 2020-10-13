@@ -167,16 +167,17 @@ acts_as_folloerというgemを用いて実装します。
 
 ### detailsテーブル
 
-| Column     | Type    | Options     |
-| ---------- | ------- | ----------- |
-| age        | integer | null: false |
-| area       | integer | null: false |
-| occupation | integer | null: false |
-| school     | string  |             |
-| experience | integer |             |
-| language   | integer |             |
-| interest   | integer | null: false |
-| pr         | text    | null: false |
+| Column     | Type       | Options                       |
+| ---------- | ---------- | ----------------------------- |
+| age        | integer    | null: false                   |
+| area       | integer    | null: false                   |
+| occupation | integer    | null: false                   |
+| school     | string     |                               |
+| experience | integer    |                               |
+| language   | integer    |                               |
+| interest   | integer    | null: false                   |
+| pr         | text       | null: false                   |
+| user       | references | null: false, foreign_key: true|
 
 #### Association
 - belongs_to :user
