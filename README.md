@@ -172,6 +172,7 @@ acts_as_folloerというgemを用いて実装します。
 | age        | integer    | null: false                   |
 | area       | integer    | null: false                   |
 | occupation | integer    | null: false                   |
+| genre      | integer    |                               |
 | school     | string     |                               |
 | experience | integer    |                               |
 | language   | integer    |                               |
