@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Techmatch</title>
+    <meta name="viewport" content="width=devise-width, initial-scale=1.0">
+    <title>TechMatch</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -10,6 +11,33 @@
   </head>
 
   <body>
+    <header class="header">
+      <div class="inner">
+        <div class="nav">
+          <div class="nav_left">
+            <%= link_to image_tag("logo.png", class: :logo), root_path %>
+          </div>
+          <%# <% ユーザーがログインしている場合は以下を表示 %>
+          <%# <div class="nave_right"> %>
+            <%# <%= link_to "ユーザーを検索", root_path, class: :nav_btn_large %> 
+            <%# <%= link_to "掲示板を見に行く", root_path, class: :nav_btn_large %> 
+            <%# <li class="nav-btn" id="my-page">ユーザー名</li> %>
+            <%# <ul class="show-lists"> %>
+              <%# <%= link_to "ログアウト", root_path %> 
+              <%# <%= link_to "アカウント詳細", root_path %> 
+            <%# </ul> %>
+          <%# </div> %>
+          <%# <% ユーザーがログインしている場合は以下を表示 %> 
+          <div class="nav_right">
+            <%= link_to "ログイン", root_path, class: :nav_btn %>
+            <%= link_to "新規登録", root_path, class: :nav_btn %>
+          </div>
+        </div>
+      </div>
+    </header>
     <%= yield %>
+    <footer class="footer">
+      <p class="copyright">Copyright © TechMatch all rights reserved.</p>
+    </footer>
   </body>
 </html>
