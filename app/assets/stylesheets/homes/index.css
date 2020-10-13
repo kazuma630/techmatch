@@ -1,0 +1,44 @@
+/* ヘッダー */
+
+.header {
+  background-color: #323232;
+  padding: 10px 0;
+}
+.inner {
+  width: 80%;
+  margin: 0 auto;
+}
+.nav {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.logo {
+  width: 200px;
+}
+.nav_btn {
+  display: inline-block;
+  padding: 0.4em 1.6em;
+  font-size: 15px;
+  color: white;
+  text-decoration: none;
+  user-select: none;
+  transition: 0.4s ease;
+}
+.nav_btn:hover{
+  background: linear-gradient(transparent 90%,#7F7F7F 90%);;
+}
+
+/* フッター */
+
+.footer{
+  background-color: #323232;
+  padding: 10px 0;
+  margin: 10px 0;
+}
+.copyright{
+  text-align: center;
+  color: #fff;
+  font-size: 10px;
+}
