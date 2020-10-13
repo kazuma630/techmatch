@@ -4,6 +4,7 @@ class CreateDetails < ActiveRecord::Migration[6.0]
       t.integer :age,         null: false
       t.integer :area,        null: false
       t.integer :occupation,  null: false
+      t.integer :genre
       t.string :school
       t.integer :experience
       t.integer :language,    null: false
