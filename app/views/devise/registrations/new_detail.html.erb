@@ -1,0 +1,55 @@
+<h2>ユーザー詳細情報登録</h2>
+
+<%= form_for @detail do |f| %>
+  <%= render "devise/shared/error_messages", resource: @detail %>
+
+  <div class="field">
+    <%= f.label :age %><br />
+    <%= f.text_field :age, class:"age", placeholder:"例:30" %>歳
+  </div>
+
+  <div class="field">
+    <%= f.label :area %><br />
+    <%= f.collection_select(:area, Area.all, :id, :name, {}, {class:"pull_select"}) %>
+  </div>
+
+  <div class="field">
+    <%= f.label :occupation %><br />
+    <%= f.collection_select(:occupation, Occupation.all, :id, :name, {}, {class:"pull_select"}) %>
+  </div>
+
+  <div class="field">
+    <%= f.label :genre %><br />
+    <%= f.collection_select(:genre, Genre.all, :id, :name, {}, {class:"pull_select"}) %>
+  </div>
+
+  <div class="field">
+    <%= f.label :school %><br />
+    <%= f.text_field :school, class:"school", placeholder:"例:〇〇大学" %>卒業
+  </div>
+
+  <div class="field">
+    <%= f.label :experience %><br />
+    <%= f.collection_select(:experience, Experience.all, :id, :name, {}, {class:"pull_select"}) %>
+  </div>
+
+  <div class="field">
+    <%= f.label :language %><br />
+    <%= f.collection_select(:language, Language.all, :id, :name, {}, {class:"pull_select"}) %>
+  </div>
+
+  <div class="field">
+    <%= f.label :interest %><br />
+    <%= f.collection_select(:interest, Interest.all, :id, :name, {}, {class:"pull_select"}) %>
+  </div>
+
+  <div class="field">
+    <%= f.label :pr %><br />
+    <%= f.text_area :pr, class:"pr", placeholder:"こんにちは。私は、web系エンジニアになることを目指して就職活動をしております。同じエンジニア職を目指す同期の方々、及び現職のエンジニアさんと交流を深められればと思いTechMatchに登録してみました。気軽にチャットしていただけると幸いです！" %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "新規登録" %>
+  </div>
+<% end %>
+
