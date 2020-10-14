@@ -10,17 +10,17 @@
 
   <div class="field">
     <%= f.label :area %><br />
-    <%= f.collection_select(:area, Area.all, :id, :name, {}, {class:"pull_select"}) %>
+    <%= f.collection_select(:area_id, Area.all, :id, :name, {}, {class:"pull_select"}) %>
   </div>
 
   <div class="field">
     <%= f.label :occupation %><br />
-    <%= f.collection_select(:occupation, Occupation.all, :id, :name, {}, {class:"pull_select"}) %>
+    <%= f.collection_select(:occupation_id, Occupation.all, :id, :name, {}, {class:"pull_select"}) %>
   </div>
 
   <div class="field">
     <%= f.label :genre %><br />
-    <%= f.collection_select(:genre, Genre.all, :id, :name, {}, {class:"pull_select"}) %>
+    <%= f.collection_select(:genre_id, Genre.all, :id, :name, {}, {class:"pull_select"}) %>
   </div>
 
   <div class="field">
@@ -30,17 +30,17 @@
 
   <div class="field">
     <%= f.label :experience %><br />
-    <%= f.collection_select(:experience, Experience.all, :id, :name, {}, {class:"pull_select"}) %>
+    <%= f.collection_select(:experience_id, Experience.all, :id, :name, {}, {class:"pull_select"}) %>
   </div>
 
   <div class="field">
     <%= f.label :language %><br />
-    <%= f.collection_select(:language, Language.all, :id, :name, {}, {class:"pull_select"}) %>
+    <%= f.collection_select(:language_id, Language.all, :id, :name, {}, {class:"pull_select"}) %>
   </div>
 
   <div class="field">
     <%= f.label :interest %><br />
-    <%= f.collection_select(:interest, Interest.all, :id, :name, {}, {class:"pull_select"}) %>
+    <%= f.collection_select(:interest_id, Interest.all, :id, :name, {}, {class:"pull_select"}) %>
   </div>
 
   <div class="field">

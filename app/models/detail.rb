@@ -11,10 +11,10 @@ class Detail < ApplicationRecord
   with_options presence: true do
     validates :age
     validates :pr
-    with_options numericality: { other_than: 1} do
-      validates :area
-      validates :occupation
-      validates :interest
-    end
+  end
+  with_options numericality: { other_than: 1} do
+    validates :area_id
+    validates :occupation_id
+    validates :interest_id
   end
 end
