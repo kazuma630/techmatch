@@ -15,9 +15,29 @@ class Users::RegistrationsController < Devise::RegistrationsController
     unless @user.valid?
       render :new and return
     end
-    
+    session["devise.regist_data"] = {user: @user.attributes}
+    session["devise.regist_data"][:user]["password"] = params[:user][:password]
+    @detail = @user.build_detail
+    render :new_detail
   end
 
+  def create_detail
+    @user = User.new(session["devise.regist_data"]["user"])
+    @detail = Detail.new(detail_params)
+    unless @detail.valid?
+      render :new_detail
+    end
+    @user.build_detail(@detail.attributes)
+    @user.save
+    session["devise.regist_data"]["user"].clear
+    sign_in(:user, @user)
+  end
+
+  private
+  def detail_params
+    params.require(:detail).permit(:age, :area_id, :occupation_id, :genre_id, :school, :experience_id, :language_id, :interest_id, :pr)
+  end
+ 
   # GET /resource/edit
   # def edit
   #   super
