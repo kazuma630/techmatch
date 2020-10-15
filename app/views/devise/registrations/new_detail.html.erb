@@ -1,0 +1,87 @@
+<%= form_with model:@detail, class: 'registration-main', local: true do |f| %>
+
+<div class='form-wrap'>
+  <div class='form-header'>
+    <h2 class='form-header-text'>ユーザー詳細情報登録</h2>
+  </div>
+
+  <%= render "devise/shared/error_messages", resource: @detail %>
+
+  <div class="form-area">
+    <div class="form-text-area">
+      <label class="form-text">年齢</label><br>
+      <span class="indispensable">必須</span>
+    </div>
+    <%= f.text_field :age, class:"text-box", placeholder:"(例) 30" %>
+  </div>
+
+  <div class="form-area">
+    <div class="form-text-area">
+      <label class="form-text">最終学歴</label><br>
+      <span class="optional">任意</span>
+    </div>
+    <%= f.text_field :school, class:"text-box", placeholder:"(例) 〇〇大学/高校" %>
+  </div>
+
+  <div class="form-area">
+    <div class="form-text-area">
+      <label class="form-text">居住地</label><br>
+      <span class="indispensable">必須</span>
+    </div>
+    <%= f.collection_select(:area_id, Area.all, :id, :name, {}, {class:"pull_select"}) %>
+  </div>
+
+  <div class="form-area">
+    <div class="form-text-area">
+      <label class="form-text">職業</label><br>
+      <span class="indispensable">必須</span>
+    </div>
+    <%= f.collection_select(:occupation_id, Occupation.all, :id, :name, {}, {class:"pull_select"}) %>
+  </div>
+
+  <div class="form-area">
+    <div class="form-text-area">
+      <label class="form-text">業種</label><br>
+      <span class="optional">任意</span>
+    </div>
+    <%= f.collection_select(:genre_id, Genre.all, :id, :name, {}, {class:"pull_select"}) %>
+  </div>
+
+  <div class="form-area">
+    <div class="form-text-area">
+      <label class="form-text">開発歴</label><br>
+      <span class="optional">任意</span>
+    </div>
+    <%= f.collection_select(:experience_id, Experience.all, :id, :name, {}, {class:"pull_select"}) %>
+  </div>
+
+  <div class="form-area">
+    <div class="form-text-area">
+      <label class="form-text">学習言語</label><br>
+      <span class="optional">任意</span>
+    </div>
+    <%= f.collection_select(:language_id, Language.all, :id, :name, {}, {class:"pull_select"}) %>
+  </div>
+
+  <div class="form-area">
+    <div class="form-text-area">
+      <label class="form-text">興味</label><br>
+      <span class="indispensable">必須</span>
+    </div>
+    <%= f.collection_select(:interest_id, Interest.all, :id, :name, {}, {class:"pull_select"}) %>
+  </div>
+
+  <div class="long-form-area">
+    <div class="form-text-area">
+      <label class="form-text">PR文</label>
+      <span class="indispensable">必須</span>
+    </div>
+    <%= f.text_area :pr, class:"input-text", placeholder:"(例) こんにちは。私は、web系エンジニアになることを目指して就職活動をしております。同じエンジニア職を目指す同期の方々、及び現職のエンジニアさんと交流を深められればと思いTechMatchに登録してみました。気軽にチャットしていただけると幸いです！" %>
+  </div>
+
+  <div class="register-btn">
+    <%= f.submit "新規登録",class:"register-blue-btn" %>
+  </div>
+</div>
+<% end %>
+
