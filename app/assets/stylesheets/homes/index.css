@@ -25,6 +25,7 @@
   text-decoration: none;
   user-select: none;
   transition: 0.4s ease;
+  cursor: pointer;
 }
 .nav_btn:hover{
   background: linear-gradient(transparent 90%,#7F7F7F 90%);;
