@@ -30,6 +30,23 @@
   background: linear-gradient(transparent 90%,#7F7F7F 90%);;
 }
 
+.nav_btn_large{
+  color: white;
+  text-decoration: none;
+  user-select: none;
+  font-size: 20px;
+  padding-left: 20px;
+}
+
+.show-lists{
+  width: 150px;
+  position: absolute;
+  right: 7%;
+  top: 60px;
+  background-color:#CCCCCC;
+  display: none;
+}
+
 /* フッター */
 
 .footer{

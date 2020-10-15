@@ -22,10 +22,10 @@
             <div class="nave_right">
               <%= link_to "ユーザーを検索", root_path, class: :nav_btn_large %>
               <%= link_to "掲示板を見に行く", root_path, class: :nav_btn_large %>
-              <li class="nav-btn" id="my-page">ユーザー名</li>
-              <ul class="show-lists">
-                <%= link_to "ログアウト", destroy_user_session_path, method: :delete %> 
-                <%= link_to "アカウント詳細", root_path %>
+              <li class="nav_btn" id="my-page">佐藤太郎さん▽</li>
+              <ul class="show-lists", id="pull-down">
+                <%= link_to "・ログアウト", destroy_user_session_path, method: :delete,class: :nav_hide_btn %><br>
+                <%= link_to "・アカウント詳細", root_path, class: :nav_hide_btn %>
               </ul>
             </div>
           <% else %>
