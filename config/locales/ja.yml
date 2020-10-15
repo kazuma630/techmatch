@@ -3,3 +3,9 @@ ja:
     attributes:
       user:
         name: 名前
+      detail:
+        age: 年齢
+        pr: PR文
+        area_id: 居住地
+        occupation_id: 職業
+        interest_id: 興味
