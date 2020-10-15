@@ -12,9 +12,7 @@ class Detail < ApplicationRecord
     validates :age
     validates :pr
   end
-  with_options numericality: { other_than: 1} do
-    validates :area_id
-    validates :occupation_id
-    validates :interest_id
-  end
+  validates :area_id, numericality: { other_than: 1, message: "を選択してください"}
+  validates :occupation_id, numericality: { other_than: 1, message: "を選択してください"}
+  validates :interest_id, numericality: { other_than: 1 , message: "を選択してください"}
 end
