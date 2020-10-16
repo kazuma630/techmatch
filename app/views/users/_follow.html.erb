@@ -1,0 +1,13 @@
+<% if user.id != current_user.id %>
+  <li class="collection-item">
+    <% unless current_user.following?(user) %>
+      <div class="action">
+        <%= link_to 'フォローする', follow_user_path, method: :put, class: "btn-click", remote: true %>
+      </div>
+    <% else %>
+      <div class="action">
+        <%= link_to 'フォローを解除する', unfollow_user_path, method: :put, class: "btn-click", remote: true %>
+      </div>
+    <% end %>
+  </li>
+<% end %>
