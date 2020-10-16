@@ -1,0 +1,1 @@
+$("#user-<%= @user.id %>").html("<%= j(render partial: 'users/follow', locals: { user: @user }) %>")
