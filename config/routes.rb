@@ -8,4 +8,9 @@ Rails.application.routes.draw do
   end
   get 'home/index'
   root to: "home#index"
+  resources :users do
+    member do
+      put :follow, :unfollow
+    end
+  end
 end
