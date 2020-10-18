@@ -31,12 +31,13 @@
         </div>
      <% end %>
     <% end %>
+    <div id="list" ></div>
   </div>
   <div class="post">
-    <%= form_for @message do |f| %>
-      <%= f.text_field :content, placeholder: "メッセージを入力してください", size: 70, class:"form-text-field" %>
+    <%= form_for @message, id: "form" do |f| %>
+      <%= f.text_field :content, placeholder: "メッセージを入力してください", size: 70, class:"form-text-field", id:"content-message" %>
       <%= f.hidden_field :room_id, value: @room.id %>
-      <%= f.submit '投稿', class:"form-submit" %>
+      <%= f.submit '投稿', class:"form-submit", id: "submit" %>
     <% end %>
   </div>
 </div>
