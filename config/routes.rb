@@ -8,4 +8,11 @@ Rails.application.routes.draw do
   end
   get 'home/index'
   root to: "home#index"
+  resources :users, only: [:show, :edit, :update] do
+    member do
+      put :follow, :unfollow
+    end
+  end
+  resources :messages, only: [:create]
+  resources :rooms, only: [:create, :show]
 end

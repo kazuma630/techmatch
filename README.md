@@ -157,7 +157,7 @@ acts_as_folloerというgemを用いて実装します。
 
 | Column  | Type       | Options                        |
 | ------- | ---------- | ------------------------------ |
-| message | text       | null: false                    |
+| content | text       | null: false                    |
 | user    | references | null: false, foreign_key: true |
 | room    | references | null: false, foreign_key: true |
 

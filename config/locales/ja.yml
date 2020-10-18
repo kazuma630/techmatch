@@ -9,3 +9,6 @@ ja:
         area_id: 居住地
         occupation_id: 職業
         interest_id: 興味
+  time:
+    formats:
+      default: "%Y/%m/%d %H:%M:%S"
