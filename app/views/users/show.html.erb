@@ -1,19 +1,70 @@
-<li id="user-<%= @user.id %>" class="collection-item">
-  <%= render 'users/follow', user:@user %>
-</li>
-<% unless @user.id == current_user.id %>
-  <% if (current_user.followed_by? @user) && (@user.followed_by? current_user) %>
-  <% if @isRoom == true %>
-    <p class="user-show-room">
-      <a href="/rooms/<%= @roomId %>" class="btn btn-primary btn-lg">チャットへ</a>
-    </p>
-  <% else %>
-    <%= form_for @room do |f| %>
+<div class="profile-inner">
+  <div class="user_wrapper">
+    <h2 class="page-heading">
+      <%= @user.name%>さんのプロフィール
+    </h2>
+    <li id="user-<%= @user.id %>" class="collection-item">
+      <%= render 'users/follow', user:@user %>
+    </li>
+    <% unless @user.id == current_user.id %>
+    <% if (current_user.followed_by? @user) && (@user.followed_by? current_user) %>
+      <% if @isRoom == true %>
+      <p class="user-show-room">
+        <a href="/rooms/<%= @roomId %>" class="btn btn-primary btn-lg">チャットへ</a>
+      </p>
+      <% else %>
+      <%= form_for @room do |f| %>
       <%= fields_for @entry do |e| %>
-        <%= e.hidden_field :user_id, value: @user.id %>
+      <%= e.hidden_field :user_id, value: @user.id %>
       <% end %>
-      <%= f.submit 'チャットを始める', class:"btn btn-primary btn-lg user-show-chat" %>
+        <%= f.submit 'チャットを始める', class:"btn btn-primary btn-lg user-show-chat" %>
+      <% end %>
+      <% end %>
     <% end %>
-  <% end %>
-  <% end %>
-<% end %>
+    <% end %>
+    <table class="table">
+      <tbody>
+        <tr>
+          <th class="table_col1">名前</th>
+          <td class="table_col2"><%= @user.name %></td>
+        </tr>
+        <tr>
+          <th class="table_col1">年齢</th>
+          <td class="table_col2"><%= @user.detail.age %></td>
+        </tr>
+        <tr>
+          <th class="table_col1">居住地</th>
+          <td class="table_col2"><%= @user.detail.area.name %></td>
+        </tr>
+        <tr>
+          <th class="table_col1">職業</th>
+          <td class="table_col2"><%= @user.detail.occupation.name %></td>
+        </tr>
+        <tr>
+          <th class="table_col1">最終学歴</th>
+          <td class="table_col2"><%= @user.detail.school %></td>
+        </tr>
+        <tr>
+          <th class="table_col1">業種</th>
+          <td class="table_col2"><%= @user.detail.genre.name %></td>
+        </tr>
+        <tr>
+          <th class="table_col1">開発歴</th>
+          <td class="table_col2"><%= @user.detail.experience.name %></td>
+        </tr>
+        <tr>
+          <th class="table_col1">学習言語</th>
+          <td class="table_col2"><%= @user.detail.language.name %></td>
+        </tr>
+        <tr>
+          <th class="table_col1">興味・関心</th>
+          <td class="table_col2"><%= @user.detail.interest.name %></td>
+        </tr>
+        <tr>
+          <th class="table_col1">PR文</th>
+          <td class="table_col2"><%= @user.detail.pr %></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
