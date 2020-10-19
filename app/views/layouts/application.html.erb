@@ -20,7 +20,7 @@
           <%# <% ユーザーがログインしている場合は以下を表示 %>
           <% if user_signed_in?%>
             <div class="nave_right">
-              <%= link_to "ユーザーを検索", root_path, class: :nav_btn_large %>
+              <%= link_to "ユーザーを検索", users_path, class: :nav_btn_large %>
               <%= link_to "掲示板を見に行く", root_path, class: :nav_btn_large %>
               <li class="nav_btn" id="my-page"><%= current_user.name %>さん</li>
               <ul class="show-lists", id="pull-down">
