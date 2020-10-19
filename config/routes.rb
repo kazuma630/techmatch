@@ -7,8 +7,9 @@ Rails.application.routes.draw do
     post 'details', to: 'users/registrations#create_detail'
   end
   get 'home/index'
+  get 'users/search'
   root to: "home#index"
-  resources :users, only: [:show, :edit, :update] do
+  resources :users, only: [:index, :show, :edit, :update] do
     member do
       put :follow, :unfollow
     end
