@@ -1,9 +1,9 @@
 <div class="messages">
   <div class="chat-header">
     <div class="left-button">
-      <%= link_to '〇〇さんとのルーム', root_path %>
+      <%= link_to '〇〇さん', root_path %>
     </div>
-    <div class="room-exit">トップページに戻る</div>
+    <div class="room-exit"><%= link_to 'トップページに戻る', root_path %></div>
   </div>
   <% @entries.each do |e| %>
     <div class="user-name">
