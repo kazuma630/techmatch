@@ -34,6 +34,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   private
+
   def detail_params
     params.require(:detail).permit(:age, :area_id, :occupation_id, :genre_id, :school, :experience_id, :language_id, :interest_id, :pr)
   end
