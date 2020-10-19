@@ -1,0 +1,50 @@
+<h2>ユーザー検索</h2>
+<%= search_form_for @p, url: users_search_path do |f| %>
+  <%= f.label :name_eq, 'ユーザー名' %>
+  <%= f.search_field :user_name_cont %>
+  <br>
+  <%= f.label :age, '年齢'%>
+  <%= f.radio_button :age_lteq, ''%>
+  指定なし
+  <%= f.radio_button :age_lteq, '20'%>
+  20歳以下
+  <%= f.radio_button :age_lteq, '30'%>
+  30歳以下
+  <%= f.radio_button :age_lteq, '40'%>
+  40歳以下
+  <br>
+  <%= f.label :area_eq,'居住地' %>
+  <%= f.collection_select :area_id_eq, Area.all, :id, :name, include_blank: '指定なし' %>
+  <br>
+  <%= f.label :occupation_eq,'職業'%>
+  <%= f.collection_select :occupation_id_eq, Occupation.all, :id, :name, include_blank: '指定なし' %>
+  <br>
+  <%= f.label :genre_eq, '業種' %>
+  <%= f.collection_select :genre_id_eq, Genre.all, :id, :name, include_blank: '指定なし' %>
+  <br>
+  <%= f.label :experience_eq, '開発歴' %>
+  <%= f.collection_select :experience_id_eq, Experience.all, :id, :name, include_blank: '指定なし' %>
+  <br>
+  <%= f.label :language_eq, '学習言語' %>
+  <%= f.collection_select :language_id_eq, Language.all, :id, :name, include_blank: '指定なし' %>
+  <br>
+  <%= f.label :interest_eq, '興味・関心' %>
+  <%= f.collection_select :interest_id_eq, Interest.all, :id, :name, include_blank: '指定なし' %>
+  <br>
+
+  <%= f.submit '検索' %>
+  <br>
+  <%# <% 新着ユーザー %> 
+  <% @details.each do |detail| %>
+    <td>
+    <br>
+    <li>
+      <%= detail.user.name %>
+      <%= detail.age %>
+      <%= detail.area.name %>
+      <%= detail.occupation.name%>
+      <%= detail.interest.name%>
+      <%= detail.pr %>
+    </li>
+  <% end %>
+<% end %>
