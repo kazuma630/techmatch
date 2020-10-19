@@ -4,7 +4,7 @@
     <td>
     <br>
     <li>
-      <%= result.user.name %>
+      <%=link_to result.user.name, user_path(result.user.id) %>
       <%= result.age %>
       <%= result.area.name %>
       <%= result.occupation.name %>
