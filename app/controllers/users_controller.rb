@@ -1,5 +1,11 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!,only: [:show]
+  before_action :search_user,only: [:index, :search]
+
+  def index
+    @details = Detail.limit(10).order("created_at DESC")
+    set_detail_column
+  end
 
   def show
     @user = User.find(params[:id])
@@ -31,6 +37,10 @@ class UsersController < ApplicationController
     current_user.stop_following(@user)
   end
 
+  def search
+    @results = @p.result.includes(:user)
+  end
+
   # def edit
   #   @user = User.find(params[:id])
   # end
@@ -59,6 +69,20 @@ class UsersController < ApplicationController
   # end
 
   private
+
+  def search_user
+    @p = Detail.ransack(params[:q])
+  end
+
+  def set_detail_column
+    @detail_area = Detail.select("area_id").distinct 
+    @detail_occupation = Detail.select("occupation_id").distinct
+    @detail_genre = Detail.select("genre_id").distinct
+    @detail_experience = Detail.select("experience_id").distinct
+    @detail_language = Detail.select("language_id").distinct
+    @detail_interest = Detail.select("interest_id").distinct
+  end
+
 
   # def detail_params
   #   params.require(:detail).permit(:age, :area_id, :occupation_id, :genre_id, :school, :experience_id, :language_id, :interest_id, :pr)
