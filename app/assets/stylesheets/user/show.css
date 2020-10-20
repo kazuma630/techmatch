@@ -36,3 +36,24 @@
   padding: 16px 8px;
   border-collapse: collapse;
 }
+
+.image-area{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 20px 0;
+}
+
+.icon-image{
+  border-radius: 50%;
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+}
+
+.icon-image-mini{
+  border-radius: 50%;
+  width: 75px;
+  height: 75px;
+  object-fit: cover;
+}

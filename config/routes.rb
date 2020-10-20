@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   devise_scope :user do
     get 'details', to: 'users/registrations#new_detail'
     post 'details', to: 'users/registrations#create_detail'
+    get 'details',  to: 'users/registrations#edit_detail'
+    patch 'details', to: 'users/registrations#update_detail'
   end
   get 'home/index'
   get 'users/search'
