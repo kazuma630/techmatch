@@ -15,5 +15,18 @@ class User < ApplicationRecord
 
 
   validates :name, presence: true
-  validates :password, format: {with: VALID_PASSWORD_REGEX, message: "は半角英数字8~20文字内で数字・英字それぞれ1文字以上含む必要があります"}
+  validates :password, format: {with: VALID_PASSWORD_REGEX, message: "は半角英数字8~20文字内で数字・英字それぞれ1文字以上含む必要があります"}, on: :create
+
+  def update_without_current_password(params, *options)
+    params.delete(:current_password)
+
+    if params[:password].blank? && params[:password_confirmation].blank?
+      params.delete(:password)
+      params.delete(:password_confirmation)
+    end
+
+    result = update_attributes(params, *options)
+    clean_up_passwords
+    result
+  end
 end

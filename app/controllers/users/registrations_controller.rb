@@ -2,7 +2,7 @@
 
 class Users::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_sign_up_params, only: [:create]
-  # before_action :configure_account_update_params, only: [:update]
+  before_action :configure_account_update_params, only: [:update]
 
   # GET /resource/sign_up
   def new
@@ -33,6 +33,41 @@ class Users::RegistrationsController < Devise::RegistrationsController
     sign_in(:user, @user)
   end
 
+  # def edit
+  #   @user = User.new
+  # end
+
+  # def update
+  #   @user = User.find(account_update_params)
+  #   unless @user.valid?
+  #     render :edit and return
+  #   end
+  #   session["devise.regist_data"] = {user: @user.attributes}
+  #   session["devise.regist_data"][:user]["password"] = params[:user][:password]
+  #   @detail = @user.build_detail
+  #   render :edit_detail
+  # end
+
+  # def update_detail
+  #   @user = User.new(session["devise.regist_data"]["user"])
+  #   @detail = Detail.find(params[:id])
+  #     unless @detail.valid?
+  #       render :edit_detail and return
+  #     end
+  #   @user.build_detail(@detail.attributes)
+  #   @user.update
+  #   session["devise.regist_data"]["user"].clear
+  #   redirect_to user_path(params[id])
+  # end
+
+  def edit
+    super
+  end
+
+  def update
+    super
+  end
+
   private
 
   def detail_params
@@ -40,14 +75,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
  
   # GET /resource/edit
-  # def edit
-  #   super
-  # end
+
 
   # PUT /resource
-  # def update
-  #   super
-  # end
+ 
 
   # DELETE /resource
   # def destroy
@@ -63,7 +94,18 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #   super
   # end
 
-  # protected
+  protected
+  def update_resource(resource, params)
+    resource.update_without_password(params)
+  end
+
+  def after_update_path_for(_resource)
+    root_path
+  end
+
+  def configure_account_update_params
+    devise_parameter_sanitizer.permit(:account_update, keys: [:name, :avatar])
+  end
 
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_sign_up_params
