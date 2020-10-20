@@ -41,33 +41,6 @@ class UsersController < ApplicationController
     @results = @p.result.includes(:user)
   end
 
-  # def edit
-  #   @user = User.find(params[:id])
-  # end
-
-  # def update
-  #   @user = User.new(sign_up_params)
-  #   unless @user.valid?
-  #     render :new and return
-  #   end
-  #   session["devise.regist_data"] = {user: @user.attributes}
-  #   session["devise.regist_data"][:user]["password"] = params[:user][:password]
-  #   @detail = @user.build_detail
-  #   render :new_detail
-  # end
-
-  # def update_detail
-  #   @user = User.new(session["devise.regist_data"]["user"])
-  #   @detail = Detail.new(detail_params)
-  #     unless @detail.valid?
-  #       render :new_detail and return
-  #     end
-  #   @user.build_detail(@detail.attributes)
-  #   @user.update
-  #   session["devise.regist_data"]["user"].clear
-  #   redirect_to user_path(params[id])
-  # end
-
   private
 
   def search_user
@@ -83,9 +56,8 @@ class UsersController < ApplicationController
     @detail_interest = Detail.select("interest_id").distinct
   end
 
-
-  # def detail_params
-  #   params.require(:detail).permit(:age, :area_id, :occupation_id, :genre_id, :school, :experience_id, :language_id, :interest_id, :pr)
-  # end
+  def detail_params
+    params.require(:detail).permit(:age, :area_id, :occupation_id, :genre_id, :school, :experience_id, :language_id, :interest_id, :pr)
+  end
 
 end

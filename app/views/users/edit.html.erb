@@ -1,7 +1,7 @@
-<%= form_with model: @user, url: user_registration_path, class: 'registration-main', local: true do |f| %>
+<%= form_with model: @user, url: user_path(@user.id), class: 'registration-main', local: true do |f| %>
 <div class='form-wrap'>
   <div class='form-header'>
-    <h2 class="form-header-text">ユーザー新規登録</h2>
+    <h2 class="form-header-text">アカウント編集ページ</h2>
   </div>
   <%= render "devise/shared/error_messages", resource: @user %>
 
@@ -49,7 +49,7 @@
   </div>
 
   <div class="next-btn">
-    <%= f.submit "詳細情報の登録ページへ", class:"next-blue-btn" %>
+    <%= f.submit "詳細情報の編集ページへ", class:"next-blue-btn" %>
   </div>
 </div>
 <% end %>

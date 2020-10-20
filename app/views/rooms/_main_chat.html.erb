@@ -1,7 +1,7 @@
 <div class="messages">
   <div class="chat-header">
     <div class="left-button">
-      <%= link_to '〇〇さん', root_path %>
+      <%= link_to '〇〇さんとのチャットルーム', root_path %>
     </div>
     <div class="room-exit"><%= link_to 'トップページに戻る', root_path %></div>
   </div>
@@ -9,7 +9,7 @@
     <div class="user-name">
       <strong>
         <% if e.user.avatar.attached? %>
-          <%= image_tag e.user.avatar, class:"user-image" %>
+          <%= image_tag e.user.avatar, class:"icon-image" %>
         <% end %>
         <a class="room-user-link" href="/users/<%= e.user.id %>">
           <%= e.user.name%>さん
@@ -25,7 +25,7 @@
           <div class="chat-box">
             <div class="chat-face">
             <% if m.user.avatar.attached? %>
-              <%= image_tag m.user.avatar, class:"user-image" %>
+              <%= image_tag m.user.avatar, class:"icon-image-mini" %>
             <% end %>
             </div>
             <div class="chat-message"><strong><%= m.content %></strong><br>
