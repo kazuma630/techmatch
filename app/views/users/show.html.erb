@@ -3,6 +3,10 @@
     <h2 class="page-heading">
       <%= @user.name%>さんのプロフィール
     </h2>
+
+    <div class="image-area">
+      <%= image_tag @user.avatar, class: 'icon-image' if @user.avatar.attached? %>
+    </div>
     <li id="user-<%= @user.id %>" class="collection-item">
       <%= render 'users/follow', user:@user %>
     </li>
@@ -66,5 +70,11 @@
         </tr>
       </tbody>
     </table>
+    <% if @user.id == current_user.id %>
+    <div class="register-btn">
+      <%= link_to "編集ページへ", edit_user_registration_path, class: :register_blue_btn %>
+      <%# <input type="submit" value="編集ページに移る" formation="" class="register-blue-btn"> %>
+    </div>
+    <% end %>
   </div>
 </div>
