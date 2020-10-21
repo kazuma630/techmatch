@@ -85,3 +85,46 @@
 .end-time{
   padding-left: 20px;
 }
+
+.post-content{
+  margin: 0 auto;
+  margin-bottom: 50px;
+  width: 80%;
+  text-decoration: none;
+  padding: 10px 20px;
+  background: #f7f7f7;
+  border-left: solid 6px#668ad8;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.22);
+}
+
+.post-title{
+  font-size: 24px;
+}
+
+.post-text{
+  padding: 20px 0;
+}
+
+.under-line{
+  border-bottom: solid 2px #7F7F7F;
+}
+
+.post-detail{
+  width: 100%;
+  /* display: flex; */
+  /* justify-content: space-between; */
+}
+
+.post-user-tag{
+  display: flex;
+  padding-top: 20px;
+  justify-content: space-between;
+}
+
+.user-name{
+  color: #1111cc;
+}
+
+.post-tag{
+  display: inline-block;
+}

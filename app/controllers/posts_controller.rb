@@ -1,6 +1,10 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!, only: [:new]
 
+  def index
+    @posts = Post.all.order(created_at: :desc)
+  end
+
   def new
     @post = PostsTag.new
   end
@@ -24,6 +28,6 @@ class PostsController < ApplicationController
   private
 
   def posts_params
-    params.require(:posts_tag).permit(:title, :content, :date, :time_first, :time_end, :people, :name)
+    params.require(:posts_tag).permit(:title, :content, :date, :time_first, :time_end, :people, :name).merge(user_id: current_user.id)
   end
 end

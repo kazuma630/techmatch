@@ -1,0 +1,43 @@
+<div class="registration-main">
+  <div class="form-wrap">
+     <div class='form-header'>
+      <h2 class='form-header-text'>タイムライン一覧ページ</h2>
+    </div>
+    <div class="register-btn">
+      <%= link_to "タイムライン投稿ページへ移る", new_post_path, class: :register_blue_btn %>
+    </div>
+    <% @posts.each do |post| %>
+    <div class="post-content">
+      <div class="post-title">
+        <span class="under-line"><%= post.title %></span>
+      </div>
+      <div class="post-text">
+        <p>■概要</p>
+        <%= post.content %>
+      </div>
+      <div class="post-detail">
+        <% if post.time_end != nil && post.time_first != nil %>
+              <p>■日程</p>
+        <div class="post-date">
+          <%= post.date %>
+          <%= post.time_first.strftime("%H時%M分") %> 〜
+          <%= post.time_end.strftime("%H時%M分") %>
+        </div>
+        <% end %>
+        <div class="post-user-tag">
+          <div class="post-user">
+          <% if post.user_id != nil %>
+            ■投稿者: <%= link_to "#{post.user.name}", user_path(post.user_id), class:'user-name' %>
+          <% end %>
+          </div>
+          <div class="post-tag">
+            <% post.tags.each do |tag| %>
+              #<%= tag.name %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <% end %>
+  </div>
+</div>
