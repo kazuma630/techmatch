@@ -18,4 +18,9 @@ Rails.application.routes.draw do
   end
   resources :messages, only: [:create]
   resources :rooms, only: [:create, :show]
+  resources :posts, only: [:new, :create] do
+    collection do
+      get 'search'
+    end
+  end
 end
