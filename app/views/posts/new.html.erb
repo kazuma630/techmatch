@@ -21,13 +21,14 @@
       <%= f.text_area :content, class:"input-text" %>
     </div>
 
-    <div class="post-area">
+    <div class="tag-area">
       <div class="form-text-area">
         <label class="form-text">タグ</label>
         <span class="indispensable">必須</span>
       </div>
-      <%= f.text_field :name, class: "text-box"%>
+      <%= f.text_field :name, class: "text-box", autocomplete: 'off' %>
     </div>
+    <div>【おすすめタグ】</div>
     <div id="search-result">
     </div>
 
