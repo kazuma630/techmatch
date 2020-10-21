@@ -8,6 +8,7 @@ class User < ApplicationRecord
   has_many :entries, dependent: :destroy
   has_many :rooms, through: :entries
   has_many :messages, dependent: :destroy
+  has_many :posts, dependent: :destroy
   acts_as_followable
   acts_as_follower
 
