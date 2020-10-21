@@ -185,14 +185,15 @@ acts_as_folloerというgemを用いて実装します。
 
 ### postsテーブル
 
-| Column     | Type    | Options     |
-| ---------- | ------- | ----------- |
-| title      | string  | null: false |
-| content    | text    | null: false |
-| date       | date    |             |
-| time_first | time    |             |
-| time_end   | time    |             |
-| people     | integer |             |
+| Column     | Type       | Options                        |
+| ---------- | ---------- | ------------------------------ |
+| title      | string     | null: false                    |
+| content    | text       | null: false                    |
+| date       | date       |                                |
+| time_first | time       |                                |
+| time_end   | time       |                                |
+| people     | integer    |                                |
+| user       | references | null: false, foreign_key: true |
 
 #### Association
 - belongs_to :user
@@ -212,13 +213,13 @@ acts_as_folloerというgemを用いて実装します。
 
 ### tagsテーブル
 
-| Column | Type   | Options     |
-| ------ | ------ | ----------- |
-| name   | string | null: false |
+| Column | Type   | Options                       |
+| ------ | ------ | ----------------------------- |
+| name   | string | null: false, uniqueness: true |
 
 #### Association
 - has_many :post_tag_relations
-- has_many :posts, through: post_tag_relations
+- has_many :posts, through: :post_tag_relations
 
 ### ER図
 
