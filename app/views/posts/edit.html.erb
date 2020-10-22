@@ -1,0 +1,59 @@
+<%= form_with model: @form, url: post_path, class: 'registration-main', local: true do |f| %>
+  <div class='form-wrap'>
+    <div class='form-header'>
+      <h2 class='form-header-text'>タイムライン編集ページ</h2>
+    </div>
+    <%= render "devise/shared/error_messages", resource: @form %>
+
+    <div class="post-area">
+      <div class="form-text-area">
+        <label class="form-text">タイトル</label><br>
+        <span class="indispensable">必須</span>
+      </div>
+      <%= f.text_field :title, class:"post-box" %>
+    </div>
+
+    <div class="long-post-area">
+      <div class="form-text-area">
+        <label class="form-text">概要</label>
+        <span class="indispensable">必須</span>
+      </div>
+      <%= f.text_area :content, class:"input-text" %>
+    </div>
+
+    <div class="tag-area">
+      <div class="form-text-area">
+        <label class="form-text">タグ</label>
+        <span class="indispensable">必須</span>
+      </div>
+      <%= f.text_field :name, class: "text-box", autocomplete: 'off' %>
+    </div>
+    <div>【おすすめタグ】</div>
+    <div id="search-result">
+    </div>
+
+    <div class="long-post-area">
+      <div class="form-text-area">
+        <label class="form-text">イベント日程</label>
+        <span class="optional">任意</span>
+      </div>
+      <div class="schedule-area">
+        <div class="date-area">
+          <label>日付</label>
+          <%= f.date_field :date %>
+        </div>
+        <div class="time-area">
+          <label>開始時刻</label>
+          <%= f.time_field :time_first %>
+          <label class="end-time">終了時刻</label>
+          <%= f.time_field :time_end %>
+        </div>
+      </div>
+    </div>
+
+    <div class="register-btn">
+      <%= f.submit "投稿する",class:"register-blue-btn" %>
+    </div>
+
+  </div>
+<% end %>
