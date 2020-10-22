@@ -9,11 +9,34 @@ class PostsTag
     validates :name
   end
 
+  delegate :persisted?, to: :post
+
+  def initialize(attributes = nil, post: Post.new)
+    @post = post
+    attributes ||= default_attributes
+    super(attributes)
+  end
+
   def save
-    # user = User.create(name: name)
     post = Post.create(title: title, content: content, date: date, time_first: time_first, time_end: time_end, people: people, user_id: user_id)
     tag = Tag.where(name: name).first_or_initialize
     tag.save
     PostTagRelation.create(post_id: post.id, tag_id: tag.id)
+  end
+
+  def to_model
+    post
+  end
+
+  private
+
+  attr_reader :post
+
+  def default_attributes
+    {
+      title: post.title,
+      content: post.content,
+      name: post.tags.pluck(:name)
+    }
   end
 end

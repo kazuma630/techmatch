@@ -97,8 +97,16 @@
   box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.22);
 }
 
+.post-headline{
+  display: flex;
+  justify-content: space-between;
+}
+
 .post-title{
   font-size: 24px;
+}
+
+.more-list{
 }
 
 .post-text{
@@ -127,4 +135,71 @@
 
 .post-tag{
   display: inline-block;
+}
+
+.edit-btn {
+  display: inline-block;
+  position: relative;
+  padding: 0.3em 1em;
+  text-decoration: none;
+  color: #000;
+  transition: .4s;
+  margin-right: 10px;
+}
+.edit-btn:hover {
+  color: #4169e1;
+}
+.edit-btn:before, .edit-btn:after {
+  position: absolute;
+  top: 0;
+  content:'';
+  width: 8px;
+  height: 100%;
+  display: inline-block;
+}
+.edit-btn:before {
+  border-left: solid 1px #4169e1;
+  border-top: solid 1px #4169e1;
+  border-bottom: solid 1px #4169e1;
+  left: 0;
+}
+.edit-btn:after {
+  content: '';
+  border-top: solid 1px #4169e1;
+  border-right: solid 1px #4169e1;
+  border-bottom: solid 1px #4169e1;
+  right: 0;
+}
+
+.delete-btn {
+  display: inline-block;
+  position: relative;
+  padding: 0.3em 1em;
+  text-decoration: none;
+  color: #000;
+  transition: .4s;
+}
+.delete-btn:hover {
+  color:#ff7f7f;
+}
+.delete-btn:before, .delete-btn:after {
+  position: absolute;
+  top: 0;
+  content:'';
+  width: 8px;
+  height: 100%;
+  display: inline-block;
+}
+.delete-btn:before {
+  border-left: solid 1px #ff7f7f;
+  border-top: solid 1px #ff7f7f;
+  border-bottom: solid 1px #ff7f7f;
+  left: 0;
+}
+.delete-btn:after {
+  content: '';
+  border-top: solid 1px #ff7f7f;
+  border-right: solid 1px #ff7f7f;
+  border-bottom: solid 1px #ff7f7f;
+  right: 0;
 }
