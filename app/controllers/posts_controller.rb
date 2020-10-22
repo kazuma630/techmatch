@@ -32,14 +32,15 @@ class PostsController < ApplicationController
     @form = PostsTag.new(posts_params, post: @post)
     if @form.valid?
       @form.save
-      return redirect_to posts_path
+      # return redirect_to posts_path
     else
       render :edit
     end
   end
 
   def destroy
-    
+    post = Post.find(params[:id])
+    post.destroy
   end
 
   def search
