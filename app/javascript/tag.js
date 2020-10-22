@@ -1,8 +1,8 @@
-if (location.pathname.match("posts/new")){
+if (location.pathname.match("posts/new") || location.pathname.match("/edit")){
   window.addEventListener("load", (e) => {
-    const inputElement = document.getElementById("posts_tag_name");
+    const inputElement = document.getElementById("post_name");
     inputElement.addEventListener('keyup', (e) => {
-      const input = document.getElementById("posts_tag_name").value;
+      const input = document.getElementById("post_name").value;
       const xhr = new XMLHttpRequest();
       xhr.open("GET", `search/?input=${input}`, true);
       xhr.responseType = "json";
@@ -25,7 +25,7 @@ if (location.pathname.match("posts/new")){
 
           const clickElement = document.getElementById(tag.id);
           clickElement.addEventListener('click', () => {
-            document.getElementById("posts_tag_name").value = clickElement.textContent;
+            document.getElementById("post_name").value = clickElement.textContent;
             clickElement.remove();
           })
         })
