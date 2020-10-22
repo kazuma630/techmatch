@@ -1,9 +1,9 @@
-<%= form_with model: @post, url: posts_path, class: 'registration-main', local: true do |f| %>
+<%= form_with model: @form, url: posts_path, class: 'registration-main', local: true do |f| %>
   <div class='form-wrap'>
     <div class='form-header'>
       <h2 class='form-header-text'>タイムライン投稿ページ</h2>
     </div>
-    <%= render "devise/shared/error_messages", resource: @post %>
+    <%# <%= render "devise/shared/error_messages", resource: @form %> 
 
     <div class="post-area">
       <div class="form-text-area">

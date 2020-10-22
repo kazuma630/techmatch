@@ -8,8 +8,14 @@
     </div>
     <% @posts.each do |post| %>
     <div class="post-content">
-      <div class="post-title">
-        <span class="under-line"><%= post.title %></span>
+      <div class="post-headline">
+        <div class="post-title">
+          <span class="under-line"><%= post.title %></span>
+        </div>
+        <div class="more-list">
+          <%= link_to '編集', edit_post_path(post.id), class: "edit-btn" %>
+          <%= link_to '削除', post_path(post.id), method: :delete, class: "delete-btn" %>
+        </div>
       </div>
       <div class="post-text">
         <p>■概要</p>
