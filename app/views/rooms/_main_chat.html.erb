@@ -1,4 +1,4 @@
-<div class="messages">
+<div class="messages", id="message">
   <div class="chat-header">
     <div class="left-button">
       <%= link_to '〇〇さんとのチャットルーム', root_path %>
@@ -38,12 +38,20 @@
     </div>
   </div>
 </div>
+<div id="chat">
+<span id="video-end">ビデオ通話を止める</span>
+ <chat />
+</div>
+<%= javascript_pack_tag 'chat' %>
+<%= stylesheet_pack_tag 'chat' %>
 <div class="form">
     <%= form_for @message, id: "form", class: "post" do |f| %>
       <div class="post-message">
         <%= f.text_field :content, placeholder: "メッセージを入力してください", size: 70, class:"form-text-field", id:"content-message" %>
         <%= f.hidden_field :room_id, value: @room.id %>
          <%= f.submit '送信', class:"form-submit", id: "submit" %>
+         <input type="button" value="ビデオ通話を始める", class="form-submit", id= "video-button"> 
       </div>
     <% end %>
 </div>
+
