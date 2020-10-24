@@ -1,0 +1,1 @@
+Webpacker::Compiler.env["SKYWAY_ACCESS_KEY_ID"] = ENV["SKYWAY_ACCESS_KEY_ID"]
