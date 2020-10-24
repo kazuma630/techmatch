@@ -5,7 +5,7 @@
 .side-bar{
   background-color: #253141;
   width: 300px;
-  height: calc(100vh - 72.5px);
+  /* height: calc(100vh - 72.5px); */
 }
 
 .rooms{
@@ -97,4 +97,8 @@ width: calc(100vw - 300px);
   height: 50px;
   margin-left: 10px;
   padding: 0 20px;
+}
+
+#chat{
+  display: none;
 }
