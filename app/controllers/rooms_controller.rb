@@ -11,6 +11,8 @@ class RoomsController < ApplicationController
   def show
     @room = Room.find(params[:id])
     if Entry.where(user_id: current_user.id, room_id: @room.id).present?
+      @rooms = Room.where(user_id: current_user.id)
+      # @entries_full = Entry.where(room_id: @rooms.room_id)
       @messages = @room.messages
       @message = Message.new
       @entries = @room.entries
@@ -24,4 +26,5 @@ class RoomsController < ApplicationController
   def entry_params
     params.require(:entry).permit(:room_id, :user_id).merge(room_id: @room.id)
   end
+
 end
