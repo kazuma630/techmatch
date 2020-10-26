@@ -1,37 +1,72 @@
 <div class="messages", id="message">
-  <div class="chat-header">
-    <div class="left-button">
-      <%= link_to '〇〇さんとのチャットルーム', root_path %>
+  <div class="chat-top">
+    <div class="chat-header">
+      <%# <div class="left-button">
+        <%= link_to '〇〇さんとのチャットルーム', root_path %>
+      <%# </div> %> 
+      <div class="room-exit"><%= link_to 'トップページに戻る', root_path %></div>
     </div>
-    <div class="room-exit"><%= link_to 'トップページに戻る', root_path %></div>
+    <% @entries.each do |e| %>
+    <% if e.user.id != current_user.id %>
+      <div class="user-name-area">
+        <strong>
+          <% if e.user.avatar.attached? %>
+            <%= link_to user_path(e.user.id), target: "_blank" do %>
+            <%= image_tag e.user.avatar, class:"icon-image" %> 
+            <% end %>
+          <% end %>
+          <a class="room-user-link" href="/users/<%= e.user.id %>">
+            チャット相手: <%= e.user.name%>さん
+          </a>
+        </strong>
+      </div>
+    <% end %>
+    <% end %>
+    <hr>
   </div>
-  <% @entries.each do |e| %>
-    <div class="user-name">
-      <strong>
-        <% if e.user.avatar.attached? %>
-          <%= image_tag e.user.avatar, class:"icon-image" %>
-        <% end %>
-        <a class="room-user-link" href="/users/<%= e.user.id %>">
-          <%= e.user.name%>さん
-        </a>
-      </strong>
-    </div>
-  <% end %>
-  <hr>
   <div class="chats">
     <div class="chat">
       <% if @messages.present? %>
         <% @messages.each do |m| %>
-          <div class="chat-box">
-            <div class="chat-face">
-            <% if m.user.avatar.attached? %>
-              <%= image_tag m.user.avatar, class:"icon-image-mini" %>
-            <% end %>
-            </div>
-            <div class="chat-message"><strong><%= m.content %></strong><br>
-              <%= l m.created_at %>
+        <% if m.user.id == current_user.id%>
+          <div class="kaiwa">
+            <figure class="kaiwa-img-left">
+              <% if m.user.avatar.attached? %>
+                <%= image_tag m.user.avatar, class:"icon-image-mini" %>
+              <% end %>
+            </figure>
+            <div class="kaiwa-text-right">
+              <p class="kaiwa-text">
+                <strong><%= m.content %></strong><br>
+                <%= l m.created_at %>
+              </p>
             </div>
           </div>
+        <% else %>
+          <div class="kaiwa">
+            <figure class="kaiwa-img-right">
+              <% if m.user.avatar.attached? %>
+                <%= image_tag m.user.avatar, class:"icon-image-mini" %>
+              <% end %>
+            </figure>
+            <div class="kaiwa-text-left">
+              <p class="kaiwa-text">
+                <strong><%= m.content %></strong><br>
+                <%= l m.created_at %>
+              </p>
+            </div>
+          </div>
+          <%# <div class="chat-box">
+            <div class="chat-face">
+            <% if m.user.avatar.attached? %>
+              <%# <%= image_tag m.user.avatar, class:"icon-image-mini" %>
+            <%# <% end %>
+            <%# </div>
+            <%# <div class="chat-message"><strong><%= m.content %> 
+              <%# <%= l m.created_at %> 
+            <%# </div>
+          </div> %> 
+        <% end %>
       <% end %>
       <% end %>
       <div id="list" ></div>
@@ -45,11 +80,13 @@
 <%= javascript_pack_tag 'chat' %>
 <%= stylesheet_pack_tag 'chat' %>
 <div class="form">
-    <%= form_for @message, id: "form", class: "post" do |f| %>
+    <%= form_with model:@message, id: "form", class: "post" do |f| %>
       <div class="post-message">
         <%= f.text_field :content, placeholder: "メッセージを入力してください", size: 70, class:"form-text-field", id:"content-message" %>
         <%= f.hidden_field :room_id, value: @room.id %>
+        <%= f.hidden_field :avatar, value: current_user.avatar %>
          <%= f.submit '送信', class:"form-submit", id: "submit" %>
+        <%# #  <input type="button" value="送信", class="form-submit", id="submit"> %>
          <input type="button" value="ビデオ通話を始める", class="form-submit", id= "video-button"> 
       </div>
     <% end %>
