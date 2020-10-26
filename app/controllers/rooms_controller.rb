@@ -11,7 +11,7 @@ class RoomsController < ApplicationController
   def show
     @room = Room.find(params[:id])
     if Entry.where(user_id: current_user.id, room_id: @room.id).present?
-      @rooms = Room.where(user_id: current_user.id)
+      # @rooms = Room.where(user_id: current_user.id)
       # @entries_full = Entry.where(room_id: @rooms.room_id)
       @messages = @room.messages
       @message = Message.new
