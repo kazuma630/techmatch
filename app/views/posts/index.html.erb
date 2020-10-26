@@ -12,10 +12,12 @@
         <div class="post-title">
           <span class="under-line"><%= post.title %></span>
         </div>
+        <% if post.user_id == current_user.id %>
         <div class="more-list">
           <%= link_to '編集', edit_post_path(post.id), class: "edit-btn" %>
           <%= link_to '削除', post_path(post.id), method: :delete, class: "delete-btn" %>
         </div>
+        <% end %>
       </div>
       <div class="post-text">
         <p>■概要</p>
