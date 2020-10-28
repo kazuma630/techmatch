@@ -11,7 +11,7 @@
       <div class="user-name-area">
         <strong>
           <% if e.user.avatar.attached? %>
-            <%= link_to user_path(e.user.id), target: "_blank" do %>
+            <%= link_to user_path(e.user.id) do %>
             <%= image_tag e.user.avatar, class:"icon-image" %> 
             <% end %>
           <% end %>
@@ -47,6 +47,8 @@
             <figure class="kaiwa-img-right">
               <% if m.user.avatar.attached? %>
                 <%= image_tag m.user.avatar, class:"icon-image-mini" %>
+              <% else %>
+                <%= image_tag 'no_image', class:"icon-image-mini" %>
               <% end %>
             </figure>
             <div class="kaiwa-text-left">
