@@ -13,12 +13,10 @@ class RoomsController < ApplicationController
     @room = Room.find(params[:id])
     if Entry.where(user_id: current_user.id, room_id: @room.id).present?
       @rooms = Entry.where(user_id: current_user.id)
-      binding.pry
-      @entries_full = Entry.where(room_id: @rooms.room_id)
-      
       @messages = @room.messages
       @message = Message.new
       @entries = @room.entries
+      # @entry = @room.entries.where.not(user_id: current_user.id)
     else
       redirect_back(fallback_location: root_path)
     end
