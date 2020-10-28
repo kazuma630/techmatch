@@ -38,8 +38,15 @@
 .user-talk{
   color: #fff;
   font-size: 14px;
-  border: solid 1px #fff;
+  border: solid 1px #aaa;
   padding: 10px;
+  border-radius: 3px;
+  transition: .4s;
+}
+
+.user-talk:hover {
+  background: #aaa;
+  color: white;
 }
 
 .user-talk a{

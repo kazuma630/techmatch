@@ -5,7 +5,11 @@
     </h2>
 
     <div class="image-area">
-      <%= image_tag @user.avatar, class: 'icon-image' if @user.avatar.attached? %>
+      <% if @user.avatar.attached? %>
+      <%= image_tag @user.avatar, class: 'icon-image'%> 
+      <% else %>
+      <%= image_tag 'no_image', class: 'icon-image' %>
+      <% end %>
     </div>
     <li id="user-<%= @user.id %>" class="collection-item">
       <%= render 'users/follow', user:@user %>
