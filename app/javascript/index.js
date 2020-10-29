@@ -15,3 +15,12 @@ function open() {
 }
 
 setInterval(open, 1000);
+
+$(window).scroll(function () {
+  const now = $(window).scrollTop();
+  if (now > 300) {
+    $('.pagetop').fadeIn("slow");
+  } else {
+    $('.pagetop').fadeOut('slow');
+  }
+});
