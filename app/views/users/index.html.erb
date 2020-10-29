@@ -3,56 +3,48 @@
   <div class="form-header">
     <h2 class="form-header-text">ユーザー検索</h2>
   </div>
-
   <div class="form-area">
     <div class="form-text-area">
       <%= f.label :name_eq,  'ユーザー名', class: 'form-text' %>
     </div>
     <%= f.search_field :user_name_cont, class:'text-box' %>
   </div>
-
   <div class="form-area">
     <div class="form-text-area">
       <%= f.label :area_eq,'居住地', class: 'form-text' %>
     </div>
     <%= f.collection_select(:area_id_eq, Area.all, :id, :name,{include_blank: '指定なし'}, {class:"pull_select"})%>
   </div>
-
   <div class="form-area">
     <div class="form-text-area">
       <%= f.label :occupation_eq,'職業', class: 'form-text'%>
     </div>
     <%= f.collection_select :occupation_id_eq, Occupation.all, :id, :name, {include_blank: '指定なし'}, {class:"pull_select"}%>
   </div>
-
   <div class="form-area">
     <div class="form-text-area">
       <%= f.label :genre_eq, '業種', class: 'form-text' %>
     </div>
     <%= f.collection_select :genre_id_eq, Genre.all, :id, :name, {include_blank: '指定なし'},{class:"pull_select"} %>
   </div>
-
   <div class="form-area">
     <div class="form-text-area">
       <%= f.label :experience_eq, '開発歴', class: 'form-text' %>
     </div>
     <%= f.collection_select :experience_id_eq, Experience.all, :id, :name, {include_blank: '指定なし'}, {class:"pull_select"} %>
   </div>
-  
   <div class="form-area">
     <div class="form-text-area">
      <%= f.label :language_eq, '学習言語', class: 'form-text' %>
     </div>
     <%= f.collection_select :language_id_eq, Language.all, :id, :name, {include_blank: '指定なし'}, {class:"pull_select"} %>
   </div>
-  
   <div class="form-area">
     <div class="form-text-area">
       <%= f.label :interest_eq, '興味・関心', class: 'form-text' %>
     </div>
     <%= f.collection_select :interest_id_eq, Interest.all, :id, :name, {include_blank: '指定なし'}, {class:"pull_select"} %>
   </div>
-
   <div class="form-area">
     <div class="form-text-area">
       <%= f.label :age, '年齢', class: 'form-text'%>
@@ -66,7 +58,6 @@
      <%= f.radio_button :age_lteq, '40'%>
     40歳以下
   </div>
-
   <div class="register-btn">
   <%= f.submit '検索',class:"register-blue-btn"%>
   </div>
@@ -76,17 +67,38 @@
   <div class="form-header">
     <h2 class="form-header-text">新着ユーザー</h2>
   </div>
+  <%# <div class="search-box"> %>
   <% @details.each do |detail| %>
-    <td>
-    <br>
-    <li>
-      <%= link_to detail.user.name, user_path(detail.user.id) %>
-      <%= detail.age %>
-      <%= detail.area.name %>
-      <%= detail.occupation.name%>
-      <%= detail.interest.name%>
-      <%= detail.pr %>
-    </li>
+    <div class="profile-box">
+      <div class="search-card">
+        <div class="search-header">
+          <% if detail.user.avatar.attached? %>
+            <%= link_to user_path(detail.user.id), class: "card-link" do %>
+              <%= image_tag detail.user.avatar, class: 'hoverZoomlink' %>
+            <% end %>
+          <% else %>
+            <%= link_to user_path(detail.user.id), class: "card-link" do %>
+              <%= image_tag 'no_image.png', class: 'hoverZoomlink' %>
+            <% end %>
+          <% end %>
+          <div class="name-headline">
+            <%= link_to user_path(detail.user.id), class: "red-link" do %>
+              <%= detail.user.name %>
+            <% end %>
+          </div>
+        </div>
+        <div class="search-bio">
+          <p class="pr-message">
+            <p class="pr-area"><i class="fas fa-file-signature fa-lg"></i><span> Profile</span></p>
+            <br/>
+            年齢: <%= detail.age %><br/>
+            居住地: <%= detail.area.name %><br/>
+            PR: <%= detail.pr %>
+          </p>
+        </div>
+      </div>
+    </div>
   <% end %>
+  <%# </div> %>
 </div>
 <% end %>
