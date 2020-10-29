@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   before_action :search_user,only: [:index, :search]
 
   def index
-    @details = Detail.limit(10).order("created_at DESC")
+    @details = Detail.limit(5).order("created_at DESC")
     set_detail_column
   end
 
@@ -39,6 +39,8 @@ class UsersController < ApplicationController
 
   def search
     @results = @p.result.includes(:user)
+    @results_odd = @results.each_slice(2).map(&:first)
+    @results_even = @results.each_slice(2).map(&:last)
   end
 
   private

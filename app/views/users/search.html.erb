@@ -1,20 +1,83 @@
-<h2>検索結果</h2>
-<% if @results.length != 0 %>
-  <% @results.each do |result| %>
-    <td>
+<div class="registration-main">
+  <div class="index-main">
+    <div class="form-header">
+      <h2 class="form-header-text">検索結果  <%= @results.size%>件</h2>
+    </div>
+    <div class="search-btn">
+      <%= link_to '検索ページに戻る', users_path, class: :register_blue_btn %>
+    </div>
+    <% if @results.length != 0 %>
+    <div class="container-box">
+      <div class="left-container">
+        <% @results_odd.each do |odd| %>
+          <div class="profile-box">
+            <div class="search-card">
+              <div class="search-header">
+                <% if odd.user.avatar.attached? %>
+                  <%= link_to user_path(odd.user_id), class: "card-link" do %>
+                    <%= image_tag odd.user.avatar, class: 'hoverZoomlink' %>
+                  <% end %>
+                <% else %>
+                  <%= link_to user_path(odd.user_id), class: "card-link" do %>
+                    <%= image_tag 'no_image.png', class: 'hoverZoomlink' %>
+                  <% end %>
+                <% end %>
+                <div class="name-headline">
+                  <%= link_to user_path(odd.user_id), class: "red-link" do %>
+                    <%= odd.user.name %>
+                  <% end %>
+                </div>
+              </div>
+              <div class="search-bio">
+                <p class="pr-message">
+                  <p class="pr-area"><i class="fas fa-file-signature fa-lg"></i><span> Profile</span></p>
+                  <br/>
+                  年齢: <%= odd.age %><br/>
+                  居住地: <%= odd.area.name %><br/>
+                  PR: <%= odd.pr %>
+                </p>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+      <div class="right-container">
+        <% @results_even.each do |even| %>
+          <div class="profile-box">
+            <div class="search-card">
+              <div class="search-header">
+                <% if even.user.avatar.attached? %>
+                  <%= link_to user_path(even.user_id), class: "card-link" do %>
+                    <%= image_tag even.user.avatar, class: 'hoverZoomlink' %>
+                  <% end %>
+                <% else %>
+                  <%= link_to user_path(even.user_id), class: "card-link" do %>
+                    <%= image_tag 'no_image.png', class: 'hoverZoomlink' %>
+                  <% end %>
+                <% end %>
+                <div class="name-headline">
+                  <%= link_to user_path(even.user_id), class: "red-link" do %>
+                    <%= even.user.name %>
+                  <% end %>
+                </div>
+              </div>
+              <div class="search-bio">
+                <p class="pr-message">
+                  <p class="pr-area"><i class="fas fa-file-signature fa-lg"></i><span> Profile</span></p>
+                  <br/>
+                  年齢: <%= even.age %><br/>
+                  居住地: <%= even.area.name %><br/>
+                  PR: <%= even.pr %>
+                </p>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+    <% else %>
+      <h2 class="no-user-message">該当するユーザーはいません</h2>
+    <% end %>
     <br>
-    <li>
-      <%=link_to result.user.name, user_path(result.user.id) %>
-      <%= result.age %>
-      <%= result.area.name %>
-      <%= result.occupation.name %>
-      <%= result.interest.name %>
-      <%= result.pr %>
-    </li>
-  <% end %>
-<% else %>
- <p>該当する商品はありません</p>
-<% end %>
-<br>
-<%= link_to '検索ページに戻る', users_path %>
-<%= link_to 'トップページへ戻る', root_path %>
+  </div>
+</div>

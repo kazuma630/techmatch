@@ -1,8 +1,8 @@
 <div class="registration-main">
   <div class="index-main">
-    <h1 class="chat-enjoy">チャットしたいエンジニアを探しにいこう！</h2>
+    <h1 class="chat-enjoy">チャットしたいエンジニアを探しにいこう！</h1>
     <div class="search-btn">
-    <%= link_to "ユーザー検索へ", posts_path, class: :register_blue_btn %>
+    <%= link_to "ユーザー検索へ", users_path, class: :register_blue_btn %>
     </div>
 
     <div class="container-box">
@@ -59,7 +59,9 @@
                 <img src="http://lorempixel.com/150/150/people/" class="hoverZoomlink">
               </a> %>
               <div class="name-headline">
+              <%= link_to user_path(u.id), class: "red-link" do %>
                   <%= u.name %>
+              <% end %>
               </div>
             </div>
             <div class="profile-bio">
