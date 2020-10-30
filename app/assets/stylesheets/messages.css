@@ -3,7 +3,11 @@
 }
 
 .side-bar{
-  background-color: #253141;
+  /* background-color: #00008b; */
+  /* background-color: #253141; */
+  /* background-color: #003265; */
+  background-color:#001932;
+
   width: 300px;
   /* height: calc(100vh - 72.5px); */
 }
@@ -15,8 +19,8 @@
 
 .user-info{
   display: flex;
-  justify-content: space-around;
-  padding: 30px 0 20px 0; 
+  justify-content: space-between;
+  padding: 30px 10px 20px; 
   border-bottom: solid 1px gray;
 }
 
@@ -102,13 +106,14 @@ width: calc(100vw - 300px);
 }
 
 .form-submit{
-  background-color: #38AEF0;
+  background-color: #6795fd;
   border: none;
   color: #FFF;
   font-size: 16px;
   height: 50px;
   margin-left: 10px;
   padding: 0 20px;
+  cursor: pointer;
 }
 
 #chat{
@@ -222,7 +227,27 @@ p.kaiwa-text:last-child {
 
 .chat-top{
   width: 100%;
-  position: fixed;
-  z-index: 10;
+  /* position: fixed; */
+  /* top: 0; */
+  /* z-index: 10; */
   background-color: #FAFAFA;
+  /* overflow:hidden; */
+}
+
+.video-end{
+  display: inline-block;
+  margin-left: 30px;
+  margin-top: 20px;
+  cursor: pointer;
+  padding: 0.3em 1em;
+  text-decoration: none;
+  color: #f08080;
+  border: solid 2px #f08080;
+  border-radius: 3px;
+  transition: .4s;
+}
+
+.video-end:hover {
+  background: #f08080;
+  color: white;
 }

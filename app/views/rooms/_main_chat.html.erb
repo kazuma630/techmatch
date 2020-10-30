@@ -1,18 +1,20 @@
 <div class="messages", id="message">
   <div class="chat-top">
     <div class="chat-header">
-      <%# <div class="left-button">
-        <%= link_to '〇〇さんとのチャットルーム', root_path %>
-      <%# </div> %> 
-      <div class="room-exit"><%= link_to 'トップページに戻る', root_path %></div>
+      <%= link_to root_path do %>
+        <div class="room-exit">トップページに戻る</div>
+      <% end %>
     </div>
     <% @entries.each do |e| %>
     <% if e.user.id != current_user.id %>
       <div class="user-name-area">
         <strong>
-          <% if e.user.avatar.attached? %>
-            <%= link_to user_path(e.user.id) do %>
-            <%= image_tag e.user.avatar, class:"icon-image" %> 
+          <%= link_to user_path(e.user.id) do %>
+            <% if e.user.avatar.attached? %>
+              <%= image_tag e.user.avatar, class:"icon-image" %> 
+            <% else %>
+              <%# <img src="no_image.png", class="icon-image", id="sample"> %>
+              <%= image_tag 'no_image', class: 'icon-image', id: 'sample' %>
             <% end %>
           <% end %>
           <a class="room-user-link" href="/users/<%= e.user.id %>">
@@ -30,11 +32,15 @@
         <% @messages.each do |m| %>
         <% if m.user.id == current_user.id%>
           <div class="kaiwa">
-            <figure class="kaiwa-img-left">
-              <% if m.user.avatar.attached? %>
-                <%= image_tag m.user.avatar, class:"icon-image-mini" %>
-              <% end %>
-            </figure>
+            <%= link_to user_path(m.user.id) do %>
+              <figure class="kaiwa-img-left">
+                <% if m.user.avatar.attached? %>
+                  <%= image_tag m.user.avatar, class:"icon-image-mini" %>
+                <% else %>
+                  <%= image_tag 'no_image', class: 'icon-image-mini' %>
+                <% end %>
+              </figure>
+            <% end %>
             <div class="kaiwa-text-right">
               <p class="kaiwa-text">
                 <strong><%= m.content %></strong><br>
@@ -44,13 +50,15 @@
           </div>
         <% else %>
           <div class="kaiwa">
-            <figure class="kaiwa-img-right">
-              <% if m.user.avatar.attached? %>
-                <%= image_tag m.user.avatar, class:"icon-image-mini" %>
-              <% else %>
-                <%= image_tag 'no_image', class:"icon-image-mini" %>
-              <% end %>
-            </figure>
+            <%= link_to user_path(m.user.id) do %>
+              <figure class="kaiwa-img-right">
+                <% if m.user.avatar.attached? %>
+                  <%= image_tag m.user.avatar, class:"icon-image-mini" %>
+                <% else %>
+                  <%= image_tag 'no_image', class:"icon-image-mini" %>
+                <% end %>
+              </figure>
+            <% end %>
             <div class="kaiwa-text-left">
               <p class="kaiwa-text">
                 <strong><%= m.content %></strong><br>
@@ -76,7 +84,7 @@
   </div>
 </div>
 <div id="chat">
-<span id="video-end">ビデオ通話を止める</span>
+<span id="video-end" class="video-end">退出する</span>
  <chat />
 </div>
 <%= javascript_pack_tag 'chat' %>
@@ -88,7 +96,6 @@
         <%= f.hidden_field :room_id, value: @room.id %>
         <%= f.hidden_field :avatar, value: current_user.avatar %>
          <%= f.submit '送信', class:"form-submit", id: "submit" %>
-        <%# #  <input type="button" value="送信", class="form-submit", id="submit"> %>
          <input type="button" value="ビデオ通話を始める", class="form-submit", id= "video-button"> 
       </div>
     <% end %>
