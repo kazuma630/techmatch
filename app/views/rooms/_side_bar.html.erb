@@ -3,7 +3,9 @@
   <%# <% if u.user.id != @entry.user.id %> 
   <div class="user-info">
     <div class="user-name"><a><%= u.name%>さん</a></div>
-    <div class="user-talk"><%= link_to 'トークする', user_path(u.id) %></div>
+    <%= link_to user_path(u.id) do %>
+    <div class="user-talk">トークする</div>
+    <% end %>
   </div>
   <% end %>
   <%# <% end %> 
