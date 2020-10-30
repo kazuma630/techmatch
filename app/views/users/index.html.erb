@@ -69,6 +69,7 @@
   </div>
   <%# <div class="search-box"> %>
   <% @details.each do |detail| %>
+  <% if detail.user.id != current_user.id %>
     <div class="profile-box">
       <div class="search-card">
         <div class="search-header">
@@ -98,6 +99,7 @@
         </div>
       </div>
     </div>
+  <% end %>
   <% end %>
   <%# </div> %>
 </div>
