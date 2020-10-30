@@ -1,10 +1,7 @@
 // $(document).on('turbolinks:load', function() {
 // window.addEventListener('load', () => {
   function load(){
-
-
   const chatButton = document.getElementById("video-button")
-  
 
 chatButton.addEventListener('click', () => {
   document.getElementById("chat").style.display = 'block';
@@ -16,12 +13,17 @@ setTimeout(load, 1000)
 
 function down(){
   const videoEnd = document.getElementById("video-end")
+  // if (videoEnd.getAttribute("data-load") != null) {
+  //   return null;
+  // }
+  // videoEnd.setAttribute("data-load", "true");
   videoEnd.addEventListener('click', () => {
   location.reload();
+  // videoEnd.removeAttribute("data-load");
 })
 }
 
-setInterval(down, 1000)
+setInterval(down, 15000)
 
 import Vue from 'vue/dist/vue.esm'
 import Chat from '../chat.vue'

@@ -14,7 +14,6 @@ class MessagesController < ApplicationController
     if Entry.where(user_id: current_user.id, room_id: params[:message][:room_id]).present?
       @message = Message.create(message_params)
       respond_to do |format|
-        format.html { redirect_to "room_path(params[:room_id])" }
         format.json
       end
     else
