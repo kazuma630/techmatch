@@ -1,15 +1,26 @@
 $(document).on('turbolinks:load', function(){
+
   $(function() {
     $('.messages').animate({scrollTop: $('.messages')[0].scrollHeight}, 'normal');
   });
   function buildHTML(message) {
     var content = message.content ? `${ message.content }` : "";
-    var img = message.image ? `<img src= ${ message.image } class="icon-image-mini">` : "";
-   
+    if (message.image != null) {
+      var img = `<img src= ${ message.image } class="icon-image-mini">` 
+    } else {
+      // var sample = document.getElementById('sample')
+      // var src = sample.getAttribute('src');
+      var img = `<img src="http://localhost3000/no_image.png" class="icon-image-mini" alt=" ">` 
+    }
+    // var img = message.image ? `<img src= ${ message.image } class="icon-image-mini">` : "";
+    // debugger
+    
     var html = ` <div class="kaiwa">
-             <figure class="kaiwa-img-left">
-             ${img}
-             </figure>
+            <a href="/users/${message.user_id}">
+              <figure class="kaiwa-img-left">
+              ${img}
+              </figure>
+             </a>
              <div class="kaiwa-text-right">
                <p class="kaiwa-text"> 
                  <strong>${content}</strong><br>
@@ -21,7 +32,10 @@ $(document).on('turbolinks:load', function(){
   }
   const form = document.getElementById("form");
   form.addEventListener("submit", (e) => {
+    // e.preventDefault();
     e.preventDefault();
+    e.stopPropagation();
+    // return false;
     var message = new FormData(document.getElementById("form"));
     var url = "../messages"; 
     $.ajax({  
@@ -54,7 +68,6 @@ $(document).on('turbolinks:load', function(){
     }
   })
 });
-
 
 
 
