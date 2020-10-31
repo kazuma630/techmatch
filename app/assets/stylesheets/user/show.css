@@ -1,7 +1,11 @@
 .page-heading{
   font-size: 28px;
-  margin: 30px 0;
-  border-bottom: solid 1px gray;
+  margin: 50px 0 15px;
+  /* border-bottom: solid 2px gray; */
+  padding: 0.5em;/*文字周りの余白*/
+  color: #494949;/*文字色*/
+  /* background: #d7ebfe;背景色 */
+  border-left: solid 5px #668ad8;/*左線（実線 太さ 色）*/
 }
 
 .user_wrapper{
@@ -17,13 +21,15 @@
   border-collapse: collapse;
   width: 100%;
   margin: 30px 0;
+  background-color: #fafafa;
+  border: 2px solid #696969;
 }
 
 .table_col1{
   text-align: left;
   font-weight: bold;
-  background: #fafafa;
-  border: 1px solid #f5f5f5;
+  background: #d7ebfe;
+  border: 1px solid #c0c0c0;
   border-collapse: collapse;
   width: 30%;
   padding: 16px 8px;
@@ -31,7 +37,7 @@
 
 .table_col2{
   text-align: left;
-  border: 1px solid #f5f5f5;
+  border: 1px solid #c0c0c0;
   width: 70%;
   padding: 16px 8px;
   border-collapse: collapse;
@@ -59,3 +65,92 @@
   height: 75px;
   object-fit: cover;
 }
+
+.box-layout{
+  display: flex;
+  justify-content: space-between;
+  margin-left: 30%;
+  margin-right: 30%;
+}
+
+.action-red{
+  width: 132px;
+  height: 38px;
+  position: relative;
+  color: #f08080;
+  border: solid 2px #f08080;
+  border-radius: 3px;
+  transition: .4s;
+}
+
+.action-red .btn-click{
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  padding: 0.3em 1em;
+}
+
+.action-red:hover {
+  background: #f08080;
+  color: white;
+}
+
+.action-blue{
+  width: 132px;
+  height: 38px;
+  position: relative;
+  border: solid 2px #67c5ff;
+  border-radius: 3px;
+  transition: .4s;
+}
+
+.action-blue .btn-click{
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  padding: 0.3em 1em;
+}
+
+.action-blue:hover {
+  background: #67c5ff;
+}
+
+.user-show-room{
+  width: 132px;
+  height: 38px;
+  position: relative;
+  border: solid 2px #aaa;
+  border-radius: 3px;
+  transition: .4s;
+  cursor: pointer;
+}
+
+.user-show-room .go-chat{
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  padding: 0.3em 1em;
+  cursor: pointer;
+  background: none;
+	border: none;
+	outline: none;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+}
+
+.user-show-room:hover {
+  background: #aaa;
+  background: #d3d3d3;
+  /* color: white !important; */
+}
+
