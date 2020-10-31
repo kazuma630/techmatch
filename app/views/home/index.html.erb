@@ -47,7 +47,7 @@
             <div class="profile-card">
             <div class="header-box">
               <% if u.avatar.attached? %>
-                <%= link_to user_path(f.id), class: "card-link" do %>
+                <%= link_to user_path(u.id), class: "card-link" do %>
                 <%= image_tag u.avatar, class: 'hoverZoomlink' %>
               <% end %>
               <% else %>
