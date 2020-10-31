@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!,only: [:show]
   before_action :search_user,only: [:index, :search]
+  before_action :room_check,only: [:show, :follow, :unfollow]
 
   def index
     @details = Detail.limit(5).order("created_at DESC")
@@ -8,32 +9,13 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
-    @currentUserEntry = Entry.where(user_id: current_user.id)
-    @userEntry = Entry.where(user_id: @user.id)
-    unless current_user.id == @user.id
-      @currentUserEntry.each do |cu|
-        @userEntry.each do |u|
-          if cu.room_id == u.room_id then
-            @isRoom = true
-            @roomId = cu.room_id
-          end
-        end
-      end
-      unless @isRoom
-        @room = Room.new
-        @entry = Entry.new
-      end
-    end
   end
 
   def follow
-    @user = User.find(params[:id])
     current_user.follow(@user)
   end
 
   def unfollow
-    @user = User.find(params[:id])
     current_user.stop_following(@user)
   end
 
@@ -60,6 +42,26 @@ class UsersController < ApplicationController
 
   def detail_params
     params.require(:detail).permit(:age, :area_id, :occupation_id, :genre_id, :school, :experience_id, :language_id, :interest_id, :pr)
+  end
+
+  def room_check
+    @user = User.find(params[:id])
+    @currentUserEntry = Entry.where(user_id: current_user.id)
+    @userEntry = Entry.where(user_id: @user.id)
+    unless current_user.id == @user.id
+      @currentUserEntry.each do |cu|
+        @userEntry.each do |u|
+          if cu.room_id == u.room_id then
+            @isRoom = true
+            @roomId = cu.room_id
+          end
+        end
+      end
+      unless @isRoom
+        @room = Room.new
+        @entry = Entry.new
+      end
+    end
   end
 
 end
