@@ -203,3 +203,26 @@
   border-bottom: solid 1px #ff7f7f;
   right: 0;
 }
+
+#tag-area{
+  text-align: right;
+}
+
+#search-result{
+  background-color: #f0f8ff;
+  margin-top: 25px;
+  margin-right: 25px; 
+  display: inline-block;
+  width: 200px;
+}
+
+#search-result #parents .child{
+  text-align: left;
+  padding: 5px 10px;
+  border-bottom: solid 1px gray;
+  cursor: pointer;
+}
+
+#register-space{
+  margin-bottom: 120px;
+}
