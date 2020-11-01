@@ -23,11 +23,4 @@ $(window).scroll(function () {
   } else {
     $('.pagetop').fadeOut('slow');
   }
-
-  // if (now > 75) {
-  //   $('.chat-top').css('top', '0')
-  // } 
-  // else {
-  //   $('.chat-top').css('top', '')
-  // }
 });
