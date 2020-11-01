@@ -4,7 +4,7 @@
       <h2 class='form-header-text'>タイムライン一覧ページ</h2>
     </div>
     <div class="register-btn">
-      <%= link_to "タイムライン投稿ページへ移る", new_post_path, class: :register_blue_btn %>
+      <%= link_to "タイムライン投稿ページへ移る", new_post_path, data: {"turbolinks" => false}, class: :register_blue_btn %>
     </div>
     <% @posts.each do |post| %>
     <div class="post-content">
@@ -14,7 +14,7 @@
         </div>
         <% if post.user_id == current_user.id %>
         <div class="more-list">
-          <%= link_to '編集', edit_post_path(post.id), class: "edit-btn" %>
+          <%= link_to '編集', edit_post_path(post.id), data: {"turbolinks" => false}, class: "edit-btn" %>
           <%= link_to '削除', post_path(post.id), method: :delete, class: "delete-btn" %>
         </div>
         <% end %>

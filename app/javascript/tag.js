@@ -1,7 +1,9 @@
-if (location.pathname.match("posts/new") || location.pathname.match("/edit")){
-  window.addEventListener("load", (e) => {
+window.addEventListener("load", () => {
+  if (location.pathname.match("posts/new") || location.pathname.match("/edit")){
+  // document.addEventListener("DOMContentLoaded", () => {
+    // $(document).on('turbolinks:load', function(){
     const inputElement = document.getElementById("post_name");
-    inputElement.addEventListener('keyup', (e) => {
+    inputElement.addEventListener('keyup', () => {
       const input = document.getElementById("post_name").value;
       const xhr = new XMLHttpRequest();
       xhr.open("GET", `search/?input=${input}`, true);
@@ -31,5 +33,14 @@ if (location.pathname.match("posts/new") || location.pathname.match("/edit")){
         })
       }
     });
-  })
-};
+  };
+})
+
+
+  // function resetPage() {
+  //   location.reload();
+  // }
+
+  // setInterval(resetPage, 1000);
+
+
