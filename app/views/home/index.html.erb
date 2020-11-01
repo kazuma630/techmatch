@@ -1,46 +1,74 @@
 <div class="registration-main">
   <div class="index-main">
-    <h1 class="chat-enjoy">チャットしたいエンジニアを探しにいこう！</h1>
-    <div class="search-btn">
-    <%= link_to "ユーザー検索へ", users_path, class: :register_blue_btn %>
+    <div class="background">
+      <div class="top-head">
+      <h1 class="chat-enjoy">Connect with engineers ...</h1>
+      </div>
+      <div class="search-btn">
+      <%= link_to "ユーザー検索へ", users_path, class: :search_btn_blue %>
+      </div>
     </div>
 
     <div class="container-box">
         <div class="left-container">
-          <h2 class="container-headline">今すぐチャットできるユーザー</h2>
-          <% @follower_users.each do |f| %>
-          <div class="profile-box">
-            <div class="profile-card">
-              <div class="header-box">
-              <% if f.avatar.attached? %>
-              <%= link_to user_path(f.id), class: "card-link" do %>
-              <%# <a href="users/(f.id)", class="card-link"> %>
-                <%= image_tag f.avatar, class: 'hoverZoomlink' %>
-                <%# <img src="http://lorempixel.com/150/150/people/" class="hoverZoomlink"> %>
-              <%# </a> %>
-              <% end %>
-              <% else %>
-              <%= link_to user_path(f.id), class: "card-link" do %>
-              <%= image_tag 'no_image.png', class: 'hoverZoomlink' %>
-              <% end %>
-              <% end %>
-              <div class="name-headline">
-                  <%= f.name %>
+          <h2 class="container-headline">✔ 今すぐチャットできるユーザー</h2>
+          <% unless @follow_users.empty? %>
+            <% @follower_users.each do |f| %>
+            <div class="profile-box">
+              <div class="profile-card">
+                <div class="header-box">
+                <% if f.avatar.attached? %>
+                <%= link_to user_path(f.id), class: "card-link" do %>
+                <%# <a href="users/(f.id)", class="card-link"> %>
+                  <%= image_tag f.avatar, class: 'hoverZoomlink' %>
+                  <%# <img src="http://lorempixel.com/150/150/people/" class="hoverZoomlink"> %>
+                <%# </a> %>
+                <% end %>
+                <% else %>
+                <%= link_to user_path(f.id), class: "card-link" do %>
+                <%= image_tag 'no_image.png', class: 'hoverZoomlink' %>
+                <% end %>
+                <% end %>
+                <div class="name-headline">
+                    <%= f.name %>
+                </div>
+              </div>
+              <div class="profile-bio">
+                <p class="pr-message">
+                <p class="pr-area"><i class="fas fa-file-signature fa-lg"></i><span> Profile</span></p>
+                <br/>
+                  年齢: <%= f.detail.age %><br/>
+                  居住地: <%= f.detail.area.name %><br/>
+                  PR: <%= f.detail.pr %>
+                </p>
+              </div>
               </div>
             </div>
-            <div class="profile-bio">
-              <p class="pr-message">
-              <p class="pr-area"><i class="fas fa-file-signature fa-lg"></i><span> Profile</span></p>
-              <br/>
-                <%= f.detail.pr %>
-              </p>
+            <% end %>
+          <% else %>
+            <div class="profile-box">
+              <div class="profile-card">
+                <div class="header-box">
+                <%= link_to root_path, class: "card-link" do %>
+                <%= image_tag 'no_image.png', class: 'hoverZoomlink' %>
+                <% end %>
+                <div class="name-headline">
+                    no-user
+                </div>
+              </div>
+              <div class="profile-bio">
+                <p class="pr-message">
+                <p class="pr-area"><i class="fas fa-file-signature fa-lg"></i><span> Profile</span></p>
+                <br/>
+                  チャットできるユーザーがいません。ユーザーを探しにいきましょう!!
+                </p>
+              </div>
+              </div>
             </div>
-            </div>
-          </div>
           <% end %>
         </div>
         <div class="right-container">
-          <h2 class="container-headline">フォロー申請中ユーザー</h2>
+          <h2 class="container-headline">✔ フォロー申請中ユーザー</h2>
           <% @follow_users.each do |u| %>
           <% unless u.following? current_user %>
           <div class="profile-box">
@@ -68,7 +96,9 @@
               <p class="pr-message">
               <p class="pr-area"><i class="fas fa-file-signature fa-lg"></i><span> Profile</span></p>
               <br/>
-                <%= u.detail.pr %>
+                  年齢: <%= u.detail.age %><br/>
+                  居住地: <%= u.detail.area.name %><br/>
+                  PR: <%= u.detail.pr %>
               </p>
             </div>
             </div>
@@ -77,5 +107,8 @@
           <% end %>
         </div>
     </div>
+      <%= paginate @follower_users %>
   </div>
+
+
 </div>
