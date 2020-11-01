@@ -8,12 +8,8 @@ $(document).on('turbolinks:load', function(){
     if (message.image != null) {
       var img = `<img src= ${ message.image } class="icon-image-mini">` 
     } else {
-      // var sample = document.getElementById('sample')
-      // var src = sample.getAttribute('src');
       var img = `<img src="http://localhost3000/no_image.png" class="icon-image-mini" alt=" ">` 
     }
-    // var img = message.image ? `<img src= ${ message.image } class="icon-image-mini">` : "";
-    // debugger
     
     var html = ` <div class="kaiwa">
             <a href="/users/${message.user_id}">
@@ -32,10 +28,8 @@ $(document).on('turbolinks:load', function(){
   }
   const form = document.getElementById("form");
   form.addEventListener("submit", (e) => {
-    // e.preventDefault();
     e.preventDefault();
     e.stopPropagation();
-    // return false;
     var message = new FormData(document.getElementById("form"));
     var url = "../messages"; 
     $.ajax({  
@@ -49,7 +43,7 @@ $(document).on('turbolinks:load', function(){
     .done(function(data){
       var html = buildHTML(data);
       $('.chats').append(html);
-      $('#content-message').val(''); //input内のメッセージを消しています。
+      $('#content-message').val(''); 
       scrollBottom();
     })
     .fail(function(data){
@@ -60,66 +54,6 @@ $(document).on('turbolinks:load', function(){
     })
     function scrollBottom(){
       $('.messages').animate({scrollTop: $('.messages')[0].scrollHeight}, 'fast');
-      // var target = $('.kaiwa').last();
-      // var position = target.offset().top;
-      // $('.messages').animate({
-      //   scrollTop: position
-      // }, 300, 'swing');
     }
   })
 });
-
-
-
-// $(document).on('turbolinks:load', function(){
-//   $('#form').on('submit', function(e){
-//     e.preventDefault();
-//     var message = new FormData(this); //フォームに入力した値を取得しています。
-//     console.log(message)
-//   })
-// });
-
-// window.addEventListener("load", chat);
-
-// function chat() {
-//   const submit = document.getElementById("submit");
-//   submit.addEventListener("click", (e) => {
-//     e.preventDefault
-//     const formData = new FormData(document.getElementById("form"));
-//     const XHR = new XMLHttpRequest();
-//     XHR.open("POST", "/messages", true);
-//     XHR.responseType = "json";
-//     XHR.send(formData);
-//     XHR.onload = () => {
-//       if (XHR.status != 200){
-//         alert(`Error ${XHR.status}: ${XHR.statusText}`);
-//         return null;
-//       }
-//       const item = XHR.response.message;
-//       console.log(item)
-//       const list = document.getElementById("list")
-//       const formText = document.getElementById("content-message")
-//       const HTML = `
-//       <div class="kaiwa">
-//         <figure class="kaiwa-img-left">
-//           <img src="${item.avatar}" class="icon-image-mini">
-//         </figure>
-//         <div class="kaiwa-text-right">
-//           <p class="kaiwa-text"> 
-//             <strong>${item.content}</strong><br>
- 
-//           </p>
-//         </div>
-//       </div>
-//  `;
-//     list.insertAdjacentHTML("afterend", HTML);
-//     formText.value = "";
-//     };
-//   });
-// }
-// window.addEventListener("load", chat);
-
-
-
-
-// ${item.created_at.strftime("%Y/%m/%d %H:%M")} 
