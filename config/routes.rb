@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
+
   devise_for :users, controllers: {
     registrations: 'users/registrations'
   }
+
   devise_scope :user do
     get 'details', to: 'users/registrations#new_detail'
     post 'details', to: 'users/registrations#create_detail'
@@ -26,4 +28,5 @@ Rails.application.routes.draw do
       get 'search'
     end
   end
+  get 'tops/index'
 end

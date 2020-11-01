@@ -68,3 +68,4 @@ gem 'rails-i18n'
 gem 'pry-rails'
 gem "acts_as_follower", github: "tcocca/acts_as_follower"
 gem 'ransack'
+gem 'kaminari'
