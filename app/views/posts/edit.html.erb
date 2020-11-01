@@ -28,10 +28,10 @@
       </div>
       <%= f.text_field :name, class: "text-box", autocomplete: 'off' %>
     </div>
-    <div>【おすすめタグ】</div>
-    <div id="search-result">
+    <div id="tag-area">
+      <div id="search-result" class="searh-tag-area">
+      </div>
     </div>
-
     <div class="long-post-area">
       <div class="form-text-area">
         <label class="form-text">イベント日程</label>
@@ -52,7 +52,7 @@
     </div>
 
     <div class="register-btn">
-      <%= f.submit "投稿する",class:"register-blue-btn" %>
+      <%= f.submit "投稿する",class:"register-blue-btn" ,id:"register-space"%>
     </div>
 
   </div>
