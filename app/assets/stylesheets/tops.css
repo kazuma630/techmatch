@@ -62,7 +62,7 @@
 }
 
 .top-image{
-  background-image: url(top-logo.png);
+  background-image: url('top-logo.png');
   background-position: center;
   background-attachment: fixed;
   background-repeat: no-repeat;
