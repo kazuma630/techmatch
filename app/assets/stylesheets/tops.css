@@ -19,27 +19,27 @@
 
 .bgs .bg.bg--1{
   /* background: red; */
-  background-image: url('first-image.png');
+  /* background-image: url('first-image.png'); */
   animation: fadeinout 25s 0s infinite;
 }
 .bgs .bg.bg--2{
   /* background: blue; */
-  background-image: url('second-image.png');
+  /* background-image: url('second-image.png'); */
   animation: fadeinout 25s 5s infinite;
 }
 .bgs .bg.bg--3{
   /* background: yellow; */
-  background-image: url('third-image.png');
+  /* background-image: url('third-image.png'); */
   animation: fadeinout 25s 10s infinite;
 }
 .bgs .bg.bg--4{
   /* background: purple; */
-  background-image: url('fourth-image.png');
+  /* background-image: url('fourth-image.png'); */
   animation: fadeinout 25s 15s infinite;
 }
 .bgs .bg.bg--5{
   /* background: purple; */
-  background-image: url('fifth-image.png');
+  /* background-image: url('fifth-image.png'); */
   animation: fadeinout 25s 20s infinite;
 }
 
@@ -62,7 +62,7 @@
 }
 
 .top-image{
-  background-image: url('top-logo.png');
+  /* background-image: url('top-logo.png'); */
   background-position: center;
   background-attachment: fixed;
   background-repeat: no-repeat;
