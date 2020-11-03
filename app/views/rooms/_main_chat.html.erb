@@ -14,7 +14,7 @@
               <%= image_tag e.user.avatar, class:"icon-image" %> 
             <% else %>
               <%# <img src="no_image.png", class="icon-image", id="sample"> %>
-              <%= image_tag 'no_image', class: 'icon-image', id: 'sample' %>
+              <%= image_tag 'no_image.png', class: 'icon-image', id: 'sample' %>
             <% end %>
           <% end %>
           <a class="room-user-link" href="/users/<%= e.user.id %>">
@@ -37,7 +37,7 @@
                 <% if m.user.avatar.attached? %>
                   <%= image_tag m.user.avatar, class:"icon-image-mini" %>
                 <% else %>
-                  <%= image_tag 'no_image', class: 'icon-image-mini' %>
+                  <%= image_tag 'no_image.png', class: 'icon-image-mini' %>
                 <% end %>
               </figure>
             <% end %>
@@ -55,7 +55,7 @@
                 <% if m.user.avatar.attached? %>
                   <%= image_tag m.user.avatar, class:"icon-image-mini" %>
                 <% else %>
-                  <%= image_tag 'no_image', class:"icon-image-mini" %>
+                  <%= image_tag 'no_image.png', class:"icon-image-mini" %>
                 <% end %>
               </figure>
             <% end %>
@@ -66,16 +66,6 @@
               </p>
             </div>
           </div>
-          <%# <div class="chat-box">
-            <div class="chat-face">
-            <% if m.user.avatar.attached? %>
-              <%# <%= image_tag m.user.avatar, class:"icon-image-mini" %>
-            <%# <% end %>
-            <%# </div>
-            <%# <div class="chat-message"><strong><%= m.content %> 
-              <%# <%= l m.created_at %> 
-            <%# </div>
-          </div> %> 
         <% end %>
       <% end %>
       <% end %>
