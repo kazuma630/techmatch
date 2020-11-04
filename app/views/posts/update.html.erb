@@ -3,10 +3,16 @@
   <div class='form-header'>
     <h2 class="form-header-text">更新が完了しました</h2>
   </div>
-  <div class="form-area" id="timeline-update">
+  <div class="register-btn">
+    <%= link_to "タイムライン一覧に戻る", posts_path, class: :register_blue_btn %>
+  </div>
+  <%# <div class="form-area" id="timeline-update">
     <div class="form-text-area">
       <%= link_to 'タイムライン一覧に戻る', posts_path, class:"match-path" %>
-    </div>
+    <%# </div>
+  </div> %> 
+  <div class="success-image-area">
+    <%= image_tag 'success_edit.png', class: 'success-image' %>
   </div>
 </div>
 </div>
