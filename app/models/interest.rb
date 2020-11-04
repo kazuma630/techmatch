@@ -1,6 +1,6 @@
 class Interest < ActiveHash::Base
   self.data = [
-    { id: 1, name: '--' },
+    { id: 1, name: '指定なし' },
     { id: 2, name: '就職活動' },
     { id: 3, name: '転職活動' },
     { id: 4, name: '副業' },

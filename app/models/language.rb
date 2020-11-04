@@ -1,6 +1,6 @@
 class Language < ActiveHash::Base
   self.data = [
-    { id: 1, name: '--' },
+    { id: 1, name: '指定なし' },
     { id: 2, name: 'HTML/CSS' },
     { id: 3, name: 'JavaScript' },
     { id: 4, name: 'Ruby/Rails' },

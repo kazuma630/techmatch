@@ -1,6 +1,6 @@
 class Experience < ActiveHash::Base
   self.data = [
-    { id: 1, name: '--' },
+    { id: 1, name: '指定なし' },
     { id: 2, name: '完全未経験' },
     { id: 3, name: '独学中' },
     { id: 4, name: 'スクール生' },

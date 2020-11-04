@@ -1,6 +1,6 @@
 class Occupation < ActiveHash::Base
   self.data = [
-    { id: 1, name: '--' },
+    { id: 1, name: '指定なし' },
     { id: 2, name: 'システムエンジニア' },
     { id: 3, name: 'プログラマ' },
     { id: 4, name: 'データベースエンジニア' },
