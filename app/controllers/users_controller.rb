@@ -5,7 +5,7 @@ class UsersController < ApplicationController
 
   def index
     @details = Detail.limit(5).order("created_at DESC")
-    set_detail_column
+    # set_detail_column
   end
 
   def show
@@ -20,7 +20,7 @@ class UsersController < ApplicationController
   end
 
   def search
-    @results = @p.result.includes(:user)
+    @results = @p.result.includes(:user).where.not(user_id: current_user.id)
     @results_odd = @results.each_slice(2).map(&:first)
     @results_even = @results.each_slice(2).map(&:last)
     if @results.length.odd?
@@ -32,15 +32,22 @@ class UsersController < ApplicationController
 
   def search_user
     @p = Detail.ransack(params[:q])
+    @area = Area.where.not(id: 1)
+    @genre = Genre.where.not(id: 1)
+    @experience = Experience.where.not(id: 1)
+    @language = Language.where.not(id: 1)
+    @interest = Interest.where.not(id: 1)
+    @occupation = Occupation.where.not(id: 1)
   end
 
   def set_detail_column
-    @detail_area = Detail.select("area_id").distinct 
-    @detail_occupation = Detail.select("occupation_id").distinct
-    @detail_genre = Detail.select("genre_id").distinct
-    @detail_experience = Detail.select("experience_id").distinct
-    @detail_language = Detail.select("language_id").distinct
-    @detail_interest = Detail.select("interest_id").distinct
+    # @detail_area = Detail.select("area_id").distinct
+    # @detail_area = @detail_area.shift(1)
+    # @detail_occupation = Detail.select("occupation_id").distinct
+    # @detail_genre = Detail.select("genre_id").distinct
+    # @detail_experience = Detail.select("experience_id").distinct
+    # @detail_language = Detail.select("language_id").distinct
+    # @detail_interest = Detail.select("interest_id").distinct
   end
 
   def detail_params

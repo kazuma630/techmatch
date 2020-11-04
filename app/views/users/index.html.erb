@@ -13,37 +13,37 @@
     <div class="form-text-area">
       <%= f.label :area_eq,'居住地', class: 'form-text' %>
     </div>
-    <%= f.collection_select(:area_id_eq, Area.all, :id, :name,{include_blank: '指定なし'}, {class:"pull_select"})%>
+    <%= f.collection_select(:area_id_eq, @area, :id, :name, {include_blank: '指定なし'}, {class:"pull_select"})%>
   </div>
   <div class="form-area">
     <div class="form-text-area">
       <%= f.label :occupation_eq,'職業', class: 'form-text'%>
     </div>
-    <%= f.collection_select :occupation_id_eq, Occupation.all, :id, :name, {include_blank: '指定なし'}, {class:"pull_select"}%>
+    <%= f.collection_select :occupation_id_eq, @occupation, :id, :name, {include_blank: '指定なし'}, {class:"pull_select"}%>
   </div>
   <div class="form-area">
     <div class="form-text-area">
       <%= f.label :genre_eq, '業種', class: 'form-text' %>
     </div>
-    <%= f.collection_select :genre_id_eq, Genre.all, :id, :name, {include_blank: '指定なし'},{class:"pull_select"} %>
+    <%= f.collection_select :genre_id_eq, @genre, :id, :name, {include_blank: '指定なし'},{class:"pull_select"} %>
   </div>
   <div class="form-area">
     <div class="form-text-area">
       <%= f.label :experience_eq, '開発歴', class: 'form-text' %>
     </div>
-    <%= f.collection_select :experience_id_eq, Experience.all, :id, :name, {include_blank: '指定なし'}, {class:"pull_select"} %>
+    <%= f.collection_select :experience_id_eq, @experience, :id, :name, {include_blank: '指定なし'}, {class:"pull_select"} %>
   </div>
   <div class="form-area">
     <div class="form-text-area">
      <%= f.label :language_eq, '学習言語', class: 'form-text' %>
     </div>
-    <%= f.collection_select :language_id_eq, Language.all, :id, :name, {include_blank: '指定なし'}, {class:"pull_select"} %>
+    <%= f.collection_select :language_id_eq, @language, :id, :name, {include_blank: '指定なし'}, {class:"pull_select"} %>
   </div>
   <div class="form-area">
     <div class="form-text-area">
       <%= f.label :interest_eq, '興味・関心', class: 'form-text' %>
     </div>
-    <%= f.collection_select :interest_id_eq, Interest.all, :id, :name, {include_blank: '指定なし'}, {class:"pull_select"} %>
+    <%= f.collection_select :interest_id_eq, @interest, :id, :name, {include_blank: '指定なし'}, {class:"pull_select"} %>
   </div>
   <div class="form-area">
     <div class="form-text-area">
