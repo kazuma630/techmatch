@@ -15,4 +15,18 @@ class Detail < ApplicationRecord
   validates :area_id, numericality: { other_than: 1, message: "を選択してください"}
   validates :occupation_id, numericality: { other_than: 1, message: "を選択してください"}
   validates :interest_id, numericality: { other_than: 1 , message: "を選択してください"}
+
+  def self.wizard
+    find_or_create_by!(age: '21') do |detail|
+      detail.area_id = '2'
+      detail.occupation_id = '18'
+      detail.genre_id = '1'
+      detail.school = ''
+      detail.experience_id = '1'
+      detail.language_id = '4'
+      detail.interest_id = '2'
+      detail.pr = 'web系エンジニアの働き方や仕事に興味がありアプリをはじめました。何卒よろしくお願いします！'
+      detail.user_id = '47'
+    end
+  end
 end
