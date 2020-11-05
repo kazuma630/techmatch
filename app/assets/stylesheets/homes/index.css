@@ -229,6 +229,9 @@ width: 50%;
 
 .hoverZoomlink {
   width: 120px;
+  height: 80px;
+  /* object-fit: cover;  */
+  overflow: hidden;
   max-width: 100%;
   -webkit-border-radius: 50%;
   border-radius: 50%;
