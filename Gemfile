@@ -75,3 +75,4 @@ gem 'pry-rails'
 gem "acts_as_follower", github: "tcocca/acts_as_follower"
 gem 'ransack'
 gem 'kaminari'
+gem "aws-sdk-s3", require: false
