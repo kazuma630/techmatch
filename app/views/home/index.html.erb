@@ -11,7 +11,7 @@
 
     <div class="container-box">
         <div class="left-container">
-          <h2 class="container-headline">✔ 今すぐチャットできるユーザー</h2>
+          <h2 class="container-headline">✔ すぐチャットできるユーザー</h2>
           <% unless @follow_users.empty? %>
             <% @follower_users.each do |f| %>
             <div class="profile-box">
@@ -35,11 +35,11 @@
               </div>
               <div class="profile-bio">
                 <p class="pr-message">
-                <p class="pr-area"><i class="fas fa-file-signature fa-lg"></i><span> Profile</span></p>
+                <p class="pr-area"><i class="fas fa-file-signature fa-lg"></i><span> プロフィール</span></p>
                 <br/>
-                  年齢: <%= f.detail.age %><br/>
-                  居住地: <%= f.detail.area.name %><br/>
-                  PR: <%= f.detail.pr %>
+                  【年齢】 <%= f.detail.age %><br/>
+                  【居住地】 <%= f.detail.area.name %><br/>
+                  【自己紹介】 <p class="indent-text"><%= f.detail.pr %></p>
                 </p>
               </div>
               </div>
@@ -68,7 +68,7 @@
           <% end %>
         </div>
         <div class="right-container">
-          <h2 class="container-headline">✔ フォロー申請中ユーザー</h2>
+          <h2 class="container-headline">✔ フォロー申請中のユーザー</h2>
           <% @follow_users.each do |u| %>
           <% unless u.following? current_user %>
           <div class="profile-box">
@@ -94,11 +94,11 @@
             </div>
             <div class="profile-bio">
               <p class="pr-message">
-              <p class="pr-area"><i class="fas fa-file-signature fa-lg"></i><span> Profile</span></p>
+              <p class="pr-area"><i class="fas fa-file-signature fa-lg"></i><span> プロフィール</span></p>
               <br/>
-                  年齢: <%= u.detail.age %><br/>
-                  居住地: <%= u.detail.area.name %><br/>
-                  PR: <%= u.detail.pr %>
+                  【年齢】 <%= u.detail.age %><br/>
+                  【居住地】 <%= u.detail.area.name %><br/>
+                  【自己紹介】 <p class="indent-text"><%= u.detail.pr %></p>
               </p>
             </div>
             </div>
