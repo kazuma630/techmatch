@@ -68,6 +68,7 @@
     <h2 class="form-header-text">新着ユーザー</h2>
   </div>
   <%# <div class="search-box"> %>
+  <div class="profile-box-list">
   <% @details.each do |detail| %>
   <% if detail.user.id != current_user.id %>
     <div class="profile-box">
@@ -92,15 +93,16 @@
           <p class="pr-message">
             <p class="pr-area"><i class="fas fa-file-signature fa-lg"></i><span> Profile</span></p>
             <br/>
-            年齢: <%= detail.age %><br/>
-            居住地: <%= detail.area.name %><br/>
-            PR: <%= detail.pr %>
+            【年齢】 <%= detail.age %><br/>
+            【居住地】 <%= detail.area.name %><br/>
+            【自己紹介】<p class="indent-text"><%= detail.pr %></p>
           </p>
         </div>
       </div>
     </div>
   <% end %>
   <% end %>
+  </div>
   <%# </div> %>
 </div>
 <% end %>

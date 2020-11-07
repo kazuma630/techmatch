@@ -108,6 +108,8 @@ display: flex;
   /* opacity: 0.8; */
 /* background-blend-mode:lighten; */
 text-align: center;
+
+border-bottom: 6px solid gray;
 }
 
 .search_btn_blue{
@@ -132,10 +134,8 @@ text-align: center;
 .chat-enjoy{
   padding-top: 80px;
   padding-left: 25%; 
-  padding: 0.25em 0.5em;/*上下 左右の余白*/
-  color: #f0f8ff;/*文字色*/
-  /* background: transparent;背景透明に */
-  /* border-left: solid 5px #7db4e6;左線 */
+  padding: 0.25em 0.5em;
+  color: #f0f8ff;
   opacity: 0.9;
   display: inline-block;
 }
@@ -148,9 +148,10 @@ text-align: center;
 
 .container-headline{
   text-align: center;
-  padding-bottom: 20px;
-  padding-top: 30px;
-  border-top: 6px solid gray;
+  margin: 30px 120px 20px;
+  padding: 0.5em 0;
+  border-top: solid 3px #364e96;
+  border-bottom: solid 3px #364e96;
 }
 
 .left-container{
@@ -209,9 +210,10 @@ width: 50%;
   padding: 40px 20px 30px 20px;
   display: inline-block;
   float: left;
-  border-right: 2px dashed #EEEEEE;
-  background: #FFFFFF;
+  /* border-right: 2px dashed #EEEEEE; */
+  background: #fff;
   color: #000000;
+  /* background: #323232; */
   margin-top: 50px;
   opacity: 0;
   text-align: center;
@@ -247,17 +249,32 @@ width: 50%;
   display: inline-block;
   float: right;
   padding: 60px 20px 30px 20px;
-  background: #FFFFFF;
-  color: #333333;
+  /* background: #FFFFFF;
+  color: #333333; */
+  background: #494949;
+  color: #f5f5f5;
   margin-top: 50px;
   text-align: left;
   opacity: 0;
   -webkit-animation: moveIn 1s 3.1s ease forwards;
   animation: moveIn 1s 3.1s ease forwards;
+  letter-spacing: 0.05em;
+  line-height: 1.6;
 }
 
 .pr-area{
   text-align: center;
+  padding-bottom: 8px;
+  border-bottom: dashed 2px #6594e0;
+  margin: 0 10px;
+}
+
+.indent-text{
+  padding-left: 1em;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4;
 }
 
 @-webkit-keyframes init {
