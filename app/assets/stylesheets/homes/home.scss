@@ -3,13 +3,153 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .background {
-  width: 100%;
-  padding-top: 150px;
+  // width: 100%;
+  // height: auto;
+  // padding-top: 150px;
   /* background-image: url("../header-logo.png"); */
-  background-image: image-url("logo-header.png");
-  padding-bottom: 50px;
+  // background-image: image-url("logo-header.png");
+  background-image: image-url("header-back-image.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  // padding-bottom: 50px;
   /* background-color:rgba(255,255,255,0.6); */
   /* opacity: 0.8; */
 /* background-blend-mode:lighten; */
-text-align: center;
+  text-align: center;
+}
+
+/*ドロワー*/
+
+@media screen and (max-width:1000px) {
+.l-drawer {
+  position: fixed;
+  display: block;
+  z-index: 2;
+  // inputのcheckboxは非表示
+  &__checkbox{
+    display: none;
+  }
+  // ハンバーガーアイコン
+  &__icon{
+    cursor: pointer;
+    display: block;
+    width: 56px;
+    height: 60px;
+    position: fixed;
+    top: 0;
+    right: 0;
+    // ハンバーガーアイコンの中の線
+    &-parts,
+    &-parts:before,
+    &-parts:after{
+      background-color: #fff;   
+      display: block;
+      width: 26px;
+      height: 2px;
+      position: absolute;
+      top: 0;
+      right: 0;
+      left: 0;
+      bottom: 0;
+      margin: auto;
+    }
+    &-parts:before,
+    &-parts:after{
+      content: " ";
+    }
+    &-parts:before{
+      top: 16px
+    }
+    &-parts:after{
+      top: -16px
+    }
+  }
+  
+  // ドロワーメニュー開いた時のメインエリアを暗く
+  &__overlay{
+    background: #000;
+    opacity: 0;
+    pointer-events: none; //ポインタの動作全部無効化
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    right: 0;
+  }
+  
+  // ドロワーメニュー
+  &__menu{
+    background: #323232;
+    color: #fff;
+    max-width: 100%;
+    width: 320px;
+    height: 100vh;
+    overflow-y: auto; //スクロール
+    -webkit-overflow-scrolling: touch; //スクロール（SP）
+    position: fixed;
+    top: 0;
+    right: -320px;
+  }
+  // z-indexの指定（1がメインエリア）
+  &__icon{
+    z-index: 4;
+  }
+  &__menu{
+    z-index: 3;
+  }
+  &__overlay{
+    z-index: 2;
+  }
+  
+  // チェックが入ったら（アイコンクリックしたら）
+  &__checkbox:checked ~ {
+    // ハンバーガーアイコン
+    .l-drawer__icon{
+      .l-drawer__icon-parts{
+        background: transparent;
+      }
+      .l-drawer__icon-parts:before{
+        -webkit-transform: rotate(-45deg);
+        transform: rotate(-45deg);
+        top: 0;
+      }
+      .l-drawer__icon-parts:after{
+        -webkit-transform: rotate(45deg);
+        transform: rotate(45deg);
+        top: 0;
+      }
+    }
+    // メインエリアを暗くする
+    .l-drawer__overlay {
+      opacity: 0.3;
+      pointer-events: auto; //ポインタの動作デフォルトに戻す
+    }
+    // メニューをだす
+    .l-drawer__menu {
+      right: 0;
+    }
+  }
+  // 動きをスムーズに
+  &__icon-parts,
+  &__icon-parts:after,
+  &__icon-parts:before,
+  &__overlay,
+  &__menu{
+    -webkit-transition: all .7s ;
+    transition: all .7s ;
+  }
+}
+.nav_text{
+color: #fff;
+display: inline-block;
+padding-left: 30%;
+padding-top: 8%;
+padding-bottom: 5%;
+// text-decoration: none;
+transition: 0.4s ease;
+// user-select: none;
+}
+.l-drawer__item:hover{
+  background: linear-gradient(transparent 20%,#7F7F7F 90%);
+}
 }
