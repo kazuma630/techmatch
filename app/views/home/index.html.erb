@@ -1,11 +1,13 @@
 <div class="registration-main">
   <div class="index-main">
     <div class="background">
-      <div class="top-head">
-      <h1 class="chat-enjoy">Connect with engineers ...</h1>
-      </div>
-      <div class="search-btn">
-      <%= link_to "ユーザー検索へ", users_path, class: :search_btn_blue %>
+      <div class="background-text">
+        <div class="top-head">
+          <h1 class="chat-enjoy">Connect with engineers ...</h1>
+        </div>
+        <div class="search-btn">
+          <%= link_to "ユーザー検索へ", users_path, class: :search_btn_blue %>
+        </div>
       </div>
     </div>
 
@@ -30,7 +32,9 @@
                 <% end %>
                 <% end %>
                 <div class="name-headline">
+                <%= link_to user_path(f.id), class: "red-link" do %>
                     <%= f.name %>
+                <% end %>
                 </div>
               </div>
               <div class="profile-bio">
