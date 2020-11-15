@@ -12,7 +12,7 @@ AllCops:
 
 # 1行あたりの文字数をチェックする
 Layout/LineLength:
- Max: 130
+ Max: 150
 # 下記ファイルはチェックの対象から外す
  Exclude:
    - "Rakefile"
@@ -79,3 +79,33 @@ Style/FrozenStringLiteralComment:
 # メソッドパラメータ名の最小文字数を設定
 Naming/MethodParameterName:
  MinNameLength: 1
+
+Style/StringLiterals:
+  Enabled: false
+
+Layout/SpaceInsideBlockBraces:
+  Enabled: false
+
+Layout/EmptyLinesAroundBlockBody:
+  Enabled: false
+
+Layout/TrailingEmptyLines:
+  Enabled: false
+
+Layout/TrailingWhitespace:
+  Enabled: false
+
+Style/RedundantReturn:
+  Enabled: false
+
+Style/RedundantSelf:
+  Enabled: false
+
+Style/IfUnlessModifier:
+  Enabled: false
+
+GuardClause:
+  Enabled: false
+
+Style/BlockComments:
+  Enabled: false
