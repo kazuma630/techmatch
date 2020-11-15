@@ -23,7 +23,7 @@
   </div>
   <div class="form-area">
     <div class="form-text-area">
-      <%= f.label :genre_eq, '業種', class: 'form-text' %>
+      <%= f.label :genre_eq, '業務形態', class: 'form-text' %>
     </div>
     <%= f.collection_select :genre_id_eq, @genre, :id, :name, {include_blank: '指定なし'},{class:"pull_select"} %>
   </div>
