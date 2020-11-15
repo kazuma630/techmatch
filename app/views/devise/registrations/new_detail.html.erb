@@ -33,7 +33,7 @@
 
   <div class="form-area">
     <div class="form-text-area">
-      <label class="form-text">職業</label><br>
+      <label class="form-text">職種</label><br>
       <span class="indispensable">必須</span>
     </div>
     <%= f.collection_select(:occupation_id, Occupation.all, :id, :name, {}, {class:"pull_select"}) %>

@@ -17,7 +17,7 @@
   </div>
   <div class="form-area">
     <div class="form-text-area">
-      <%= f.label :occupation_eq,'職業', class: 'form-text'%>
+      <%= f.label :occupation_eq,'職種', class: 'form-text'%>
     </div>
     <%= f.collection_select :occupation_id_eq, @occupation, :id, :name, {include_blank: '指定なし'}, {class:"pull_select"}%>
   </div>
