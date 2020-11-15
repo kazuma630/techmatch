@@ -109,3 +109,6 @@ GuardClause:
 
 Style/BlockComments:
   Enabled: false
+
+Lint/ShadowingOuterLocalVariable:
+  Enabled: false
