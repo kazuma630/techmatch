@@ -1,0 +1,37 @@
+version: '3'
+services:
+  db:
+    image: mysql:5.6
+    #文字コードをutf8に設定(絵文字などをdbに保存した際にエラーを吐かないように)
+    command: mysqld --character-set-server=utf8 --collation-server=utf8_unicode_ci
+    #mysqlのパスワードを環境変数として設定
+    environment:
+    #database関連の命名
+      MYSQL_DATABASE: techmatch_development
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_USER: root
+    #ホストのmac側からアクセスできるように
+    ports:
+    #左側が4306になっているのは、のちほどsequel proとdbを接続するため。sequel proによる可視化が必要なければ左側(ホスト)も3306でOK
+      - '4306:3306'
+    volumes:
+    #データを永続化するため(コンテナを削除した際にdbに保存した情報が消えないように)。
+      - ./mysql/mysql-data:/var/lib/mysql
+      # - ./tmp/db:/var/lib/mysql/data
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    #bashコマンドはファイルから読み込んだコマンドを実行してくれる。オプション-cによりコマンドがstringから読み込まれる。.pidファイルをrmで除去した上でrails sコマンドを使えるようにしている。
+    command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
+    volumes:
+      - .:/techapp # ソースコード変更したらDocker側も即反映されるように
+    ports:
+      - "3000:3000"
+      #db側のコンテナが起動してからwebを起動)
+    depends_on:
+      - db
+    #docker-compose upを実行した際にコンテナがすぐ終了してしまうことを防ぐ
+    stdin_open: true
+    #上とほぼ同様
+    tty: true
