@@ -1,5 +1,4 @@
 class PostsTag
-
   include ActiveModel::Model
   attr_accessor :title, :content, :date, :time_first, :time_end, :people, :name, :user_id
 
@@ -25,17 +24,11 @@ class PostsTag
   end
 
   def update
-    # post = Post.update(title: title, content: content, date: date, time_first: time_first, time_end: time_end, people: people, user_id: user_id)
     post.update!(title: title, content: content, date: date, time_first: time_first, time_end: time_end, people: people, user_id: user_id)
     tag = Tag.where(name: name).first_or_initialize
     tag.update!(name: name)
-    # tag.save
     posttag = PostTagRelation.where(post_id: post.id)
     posttag.update(post_id: post.id, tag_id: tag.id)
-    # posttag.destroy
-    # PostTagRelation.create(post_id: post.id, tag_id: tag.id)
-    # posttag = PostTagRelation.find(post_id: post.id)
-    
   end
 
   def to_model
