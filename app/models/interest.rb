@@ -12,5 +12,4 @@ class Interest < ActiveHash::Base
     { id: 10, name: '飲み会' },
     { id: 11, name: '技術交流' }
   ]
-
 end

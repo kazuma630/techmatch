@@ -4,10 +4,5 @@ json.date    @message.created_at.strftime("%Y/%m/%d %H:%M:%S")
 json.user_name @message.user.name
 json.user_id @message.user_id
 if @message.user.avatar.present?
-  json.image   url_for(@message.user.avatar)
-# else
-#   json.image url_for('no_image')
+  json.image url_for(@message.user.avatar)
 end
-# else
-#   json.image 
-# end

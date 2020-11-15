@@ -12,11 +12,10 @@ class User < ApplicationRecord
   acts_as_followable
   acts_as_follower
 
-  VALID_PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]{8,20}+\z/i
-
+  VALID_PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]{8,20}+\z/i.freeze
 
   validates :name, presence: true
-  validates :password, format: {with: VALID_PASSWORD_REGEX, message: "は半角英数字8~20文字内で数字・英字それぞれ1文字以上含む必要があります"}, on: :create
+  validates :password, format: { with: VALID_PASSWORD_REGEX, message: "は半角英数字8~20文字内で数字・英字それぞれ1文字以上含む必要があります" }, on: :create
 
   def update_without_current_password(params, *options)
     params.delete(:current_password)
@@ -30,11 +29,4 @@ class User < ApplicationRecord
     clean_up_passwords
     result
   end
-
-  # def self.guest
-  #   find_or_create_by!(email: 'guest@example.com') do |user|
-  #     user.password = SecureRandom.urlsafe_base64
-  #     user.name = "太郎"
-  #   end
-  # end
 end
