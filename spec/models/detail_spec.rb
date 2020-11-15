@@ -48,7 +48,7 @@ RSpec.describe Detail, type: :model do
         @detail.valid?
         expect(@detail.errors.full_messages).to include("職業を選択してください")
       end
-      it 'interest_idが未選択だと保存できない'  do
+      it 'interest_idが未選択だと保存できない' do
         @detail.interest_id = "1"
         @detail.valid?
         expect(@detail.errors.full_messages).to include("興味を選択してください")
