@@ -7,10 +7,10 @@ class Interest < ActiveHash::Base
     { id: 5, name: '情報発信' },
     { id: 6, name: '共同アプリ開発' },
     { id: 7, name: 'プログラミングスクール' },
-    { id: 8, name: 'もくもく会' },
-    { id: 9, name: 'オフ会' },
-    { id: 10, name: 'サーバサイド系' },
-    { id: 11, name: 'フロントエンド系' }.
-    { id: 12, name: 'インフラ系' }
+    { id: 8, name: 'オフ会' },
+    { id: 9, name: 'もくもく会' },
+    { id: 10, name: 'インフラ系' },
+    { id: 11, name: 'サーバサイド系' },
+    { id: 12, name: 'フロントエンド系' }
   ]
 end
