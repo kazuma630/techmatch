@@ -1,2 +1,2 @@
 $("#user-<%= @user.id %>").html("<%= j(render partial: 'users/follow', locals: { user: @user }) %>")
-$("#show-<%= @user.id %>").html("<%= j(render partial: 'users/show', locals: { user:@user, isRoom:@isRoom, roomId:@roomId, entry:@entry, room:@room }) %>")
+$("#show-<%= @user.id %>").html("<%= j(render partial: 'users/show', locals: { user:@user, isRoom:@is_room, roomId:@room_id, entry:@entry, room:@room }) %>")
