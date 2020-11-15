@@ -41,7 +41,7 @@
 
   <div class="form-area">
     <div class="form-text-area">
-      <label class="form-text">業種</label><br>
+      <label class="form-text">業務形態</label><br>
       <span class="optional">任意</span>
     </div>
     <%= f.collection_select(:genre_id, Genre.all, :id, :name, {}, {class:"pull_select"}) %>
