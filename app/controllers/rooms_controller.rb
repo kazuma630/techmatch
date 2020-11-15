@@ -11,7 +11,7 @@ class RoomsController < ApplicationController
   def show
     @users = current_user.followings && current_user.followers
     if @users.length > 5
-      @users = @users.slice(-5,5)
+      @users = @users.slice(-5, 5)
     end
     @room = Room.find(params[:id])
     if Entry.where(user_id: current_user.id, room_id: @room.id).present?
@@ -30,5 +30,4 @@ class RoomsController < ApplicationController
   def entry_params
     params.require(:entry).permit(:room_id, :user_id).merge(room_id: @room.id)
   end
-
 end

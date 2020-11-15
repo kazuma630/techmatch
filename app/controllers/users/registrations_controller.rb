@@ -15,7 +15,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
     unless @user.valid?
       render :new and return
     end
-    session["devise.regist_data"] = {user: @user.attributes}
+
+    session["devise.regist_data"] = { user: @user.attributes }
     session["devise.regist_data"][:user]["password"] = params[:user][:password]
     @detail = @user.build_detail
     render :new_detail
@@ -24,9 +25,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def create_detail
     @user = User.new(session["devise.regist_data"]["user"])
     @detail = Detail.new(detail_params)
-      unless @detail.valid?
-        render :new_detail and return
-      end
+    unless @detail.valid?
+      render :new_detail and return
+    end
+    
     @user.build_detail(@detail.attributes)
     @user.save
     session["devise.regist_data"]["user"].clear
@@ -76,10 +78,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
  
   # GET /resource/edit
 
-
   # PUT /resource
  
-
   # DELETE /resource
   # def destroy
   #   super
@@ -95,6 +95,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   protected
+
   def update_resource(resource, params)
     resource.update_without_password(params)
   end

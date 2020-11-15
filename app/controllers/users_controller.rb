@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
-  before_action :authenticate_user!,only: [:show]
-  before_action :search_user,only: [:index, :search]
-  before_action :room_check,only: [:show, :follow, :unfollow]
+  before_action :authenticate_user!, only: [:show]
+  before_action :search_user, only: [:index, :search]
+  before_action :room_check, only: [:show, :follow, :unfollow]
 
   def index
     @details = Detail.limit(5).order("created_at DESC")
@@ -40,38 +40,27 @@ class UsersController < ApplicationController
     @occupation = Occupation.where.not(id: 1)
   end
 
-  def set_detail_column
-    # @detail_area = Detail.select("area_id").distinct
-    # @detail_area = @detail_area.shift(1)
-    # @detail_occupation = Detail.select("occupation_id").distinct
-    # @detail_genre = Detail.select("genre_id").distinct
-    # @detail_experience = Detail.select("experience_id").distinct
-    # @detail_language = Detail.select("language_id").distinct
-    # @detail_interest = Detail.select("interest_id").distinct
-  end
-
   def detail_params
     params.require(:detail).permit(:age, :area_id, :occupation_id, :genre_id, :school, :experience_id, :language_id, :interest_id, :pr)
   end
 
   def room_check
     @user = User.find(params[:id])
-    @currentUserEntry = Entry.where(user_id: current_user.id)
-    @userEntry = Entry.where(user_id: @user.id)
+    @currentuser_entry = Entry.where(user_id: current_user.id)
+    @user_entry = Entry.where(user_id: @user.id)
     unless current_user.id == @user.id
-      @currentUserEntry.each do |cu|
-        @userEntry.each do |u|
-          if cu.room_id == u.room_id then
-            @isRoom = true
-            @roomId = cu.room_id
+      @currentuser_entry.each do |cu|
+        @user_entry.each do |u|
+          if cu.room_id == u.room_id
+            @is_room = true
+            @room_id = cu.room_id
           end
         end
       end
-      unless @isRoom
+      unless @is_room
         @room = Room.new
         @entry = Entry.new
       end
     end
   end
-
 end
